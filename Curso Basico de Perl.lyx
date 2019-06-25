@@ -1,0 +1,9064 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding iso8859-1
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Curso Basico de Perl
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Fernando Quintero A.
+\end_layout
+
+\begin_layout Address
+E-mail:
+\shape italic
+quintero@mx1.ibm.com
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+Notes: 
+\shape italic
+Fernando Quintero/Mexico/IBM
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\shape italic
+Domino for AS/400
+\shape default
+
+\begin_inset Newline newline
+\end_inset
+
+IBM Global Services
+\begin_inset Newline newline
+\end_inset
+
+Ext.
+ 7654
+\begin_inset Newline newline
+\end_inset
+
+Tie Line: 877-7654
+\end_layout
+
+\begin_layout Section
+Introduccion
+\end_layout
+
+\begin_layout Subsection
+Historia de Perl
+\end_layout
+
+\begin_layout Standard
+Perl es la abreviacion de "Practical Extraction and Report Language," su
+ creador es Larry Wall y el creo Perl cuando estaba tratando de producir
+ algunos reportes de archivos, donde awk fallaba en correr.
+ El libero esta version a la comunidad de Usenet y esta fue la primera version
+ que vio la luz del dia.
+ 
+\end_layout
+
+\begin_layout Subsection
+Proposito de Perl
+\end_layout
+
+\begin_layout Standard
+Perl ha sido diseñado para asistir al programador con las tareas comunes
+ que probablemente son muy pesadas para un shell o muy simples para un programa
+ en C o algun otro lenguaje compilado.
+ 
+\end_layout
+
+\begin_layout Standard
+Una vez que te familiarices con Perl encontraras mas sencillo escribirlo
+ que un shell o una declaracion de C.
+ 
+\end_layout
+
+\begin_layout Standard
+Una de las caracteristicas de Perl es que a veces puede ser un lenguaje
+ muy criptico, pero es cuestion de tiempo para escribir programas totalmente
+ legibles.
+\end_layout
+
+\begin_layout Subsection
+Conceptos bàsicos
+\end_layout
+
+\begin_layout Standard
+Un script shell no es nada mas que una secuencia de comandos de shell en
+ un archivo de texto.
+ Cuando el archivo es hecho ejecutable al encender el bit ( a través de
+ chmod +x).
+ En forma similar , un programa en Perl es como un monton de lineas y definicion
+es en un archivo, al encender el bit de ejecuciòn este se hace ejecutable,
+ sin embargo, el archivo tiene que indicar que este no es un shell script,
+ y esto se hace al adicionar la siguiente linea en la primera linea del
+ archivo texto:
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout Standard
+Perl, es un lenguage de formato libre, como C, pero aun cuando este puede
+ escribirse asi, es necesario establecer cierto orden e indentar adecuadamente
+ el texto con el objeto de hacerlo legible al programador.
+ 
+\end_layout
+
+\begin_layout Standard
+Tal como un script shell, un programa de Perl consiste de todas las lineas
+ del archivos tomadas colectivamente como una gran rutina para ejecutar.
+ No existe el concepto de una rutina 
+\begin_inset Quotes erd
+\end_inset
+
+main
+\begin_inset Quotes erd
+\end_inset
+
+ como en C.
+\end_layout
+
+\begin_layout Standard
+Los comentarios en Perl son como los comentarios de shell (#).
+ No existen comentarios multilineas como en C.
+\end_layout
+
+\begin_layout Standard
+A diferencia de otros shells , el interprete de Perl primero efectua una
+ compilacion interna antes de ejecutar cualquier linea de codigo, esto significa
+ que no obtendras un error de sintaxis una vez que el programa de Perl ha
+ iniciado.
+ Esta misma compilacion, asegura que las operaciones sean rapidas una vez
+ que ha iniciado la ejecucion del programa.
+ 
+\end_layout
+
+\begin_layout Standard
+Asi pues , perl es como un compilador y un interprete, lo primero porque
+ primero lee completamente el programa antes de ejecutarlo y lo segundo
+ porque necesita siempre el archivo de texto para ejecutar el programa.
+ 
+\end_layout
+
+\begin_layout Subsection
+El programa 
+\begin_inset Quotes eld
+\end_inset
+
+Hello World
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como no podia faltar, necesariamente debe de existir un 
+\begin_inset Quotes eld
+\end_inset
+
+hello world
+\begin_inset Quotes erd
+\end_inset
+
+ para Perl, y este es esencialmente nuestro primer programa en dicho lenguage,
+ he aqui el mismo:
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl -w 
+\end_layout
+
+\begin_layout LyX-Code
+# File: pgm1.pl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa 1
+\end_layout
+
+\begin_layout LyX-Code
+print ("Hello, world!
+\backslash
+n");
+\end_layout
+
+\begin_layout Standard
+La primera linea es una invocacion al interprete de perl, su proposito es
+ indicar al sistema operativo que interprete va a usar para ejecutar el
+ programa que se encuentra en el archivo texto.
+ 
+\end_layout
+
+\begin_layout Standard
+Brevemente explicado, la primera linea es leida por el sistema operativo
+ que asi ejecuta al interprete de perl, este, al ser ejecutado continua
+ leyendo el archivo y ejecuta el primer comando: 
+\series bold
+print
+\series default
+ el cual nos es familiar como un programa de C lo haria.
+ Es importante notar que hay ocasiones que nos encontraremos con la misma
+ sentencia sin parentesis, lo cual es igualmente valido, la regla es: los
+ parentesis se pueden omitir en funciones integradas, y esto se deja a criterio
+ del programador.
+\end_layout
+
+\begin_layout Subsection
+Preguntando y recordando el resultado
+\end_layout
+
+\begin_layout Standard
+Necesariamente tenemos que aumentar la complejidad de este ejemplo y ahora
+ modificaremos este programa para que recuerde nuestro nombre, y sea menos
+ frio con nosotros.
+\end_layout
+
+\begin_layout Standard
+Una manera de almacenar valores es a traves de las 
+\series bold
+variables escalares
+\series default
+ nosotros las utilizaremos para tal objeto ( posteriormente las veremos
+ con mas detalle).
+ 
+\end_layout
+
+\begin_layout Standard
+El programa necesita preguntar por nuestro nombre y almacenar el resultado,
+ saludandonos de vuelta con nuestro nombre.
+ La primera cosa que haremos es imprimir la pregunta y posteriormente leer
+ de la terminal la informacion a traves de <STDIN>, luego asignaremos este
+ a la variable $nombre: 
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa 2
+\end_layout
+
+\begin_layout LyX-Code
+# File: pgm2.pl
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+cual es tu nombre?
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+$nombre = <STDIN>;
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Hola $nombre, como estas ?
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Digamos que tenemos ahora un saludo especial para 
+\begin_inset Quotes eld
+\end_inset
+
+Fernando
+\begin_inset Quotes erd
+\end_inset
+
+, y vamos a verificar si es en realidad tal persona , el programa quedaria
+ de la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa 3
+\end_layout
+
+\begin_layout LyX-Code
+# File pgm3.pl
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Cual es tu nombre?
+\begin_inset Quotes erd
+\end_inset
+
+;                            # Preguntamos por el nombre.
+\end_layout
+
+\begin_layout LyX-Code
+$nombre = <STDIN>;
+\end_layout
+
+\begin_layout LyX-Code
+if ($nombre eq 
+\begin_inset Quotes eld
+\end_inset
+
+Fernando
+\begin_inset Quotes erd
+\end_inset
+
+) {
+\end_layout
+
+\begin_layout LyX-Code
+       print 
+\begin_inset Quotes eld
+\end_inset
+
+Hola Fernando , gusto en saludarte!
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;  # Fernando 
+\end_layout
+
+\begin_layout LyX-Code
+} else {
+\end_layout
+
+\begin_layout LyX-Code
+       print 
+\begin_inset Quotes eld
+\end_inset
+
+Hola $nombre, como estas?
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;            # Cualquier otro.
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Aqui introducimos el operador 
+\series bold
+if
+\series default
+ y dentro el mismo utilizamos la comparacion 
+\series bold
+eq
+\series default
+ , la cual nos permite preguntar por un valor igual en la cadena que estamos
+ comparando.
+ 
+\end_layout
+
+\begin_layout Subsection
+Algunos ejemplos mas
+\end_layout
+
+\begin_layout Standard
+A continuacion , incrementaremos nuestro programa, agregando una palabra
+ secreta, la cual solo sera preguntada si nuestro interlocutor no se llama
+ Fernando.
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl -w 
+\end_layout
+
+\begin_layout LyX-Code
+# Programa 4
+\end_layout
+
+\begin_layout LyX-Code
+# File pgm4.pl
+\end_layout
+
+\begin_layout LyX-Code
+$secretword = "llama";                          # la palabra secreta 
+\end_layout
+
+\begin_layout LyX-Code
+print "cual es tu nombre? "; 
+\end_layout
+
+\begin_layout LyX-Code
+$name = <STDIN>; 
+\end_layout
+
+\begin_layout LyX-Code
+chomp $nombre; 
+\end_layout
+
+\begin_layout LyX-Code
+if ($name eq "Fernando") { 
+\end_layout
+
+\begin_layout LyX-Code
+   print "Hola Fernando! gusto en saludarte!
+\backslash
+n"; 
+\end_layout
+
+\begin_layout LyX-Code
+} else { 
+\end_layout
+
+\begin_layout LyX-Code
+   print "Hola, $nombre!
+\backslash
+n";                      # Saludo ordinario
+\end_layout
+
+\begin_layout LyX-Code
+   print "Cual es la palabra secreta? "; 
+\end_layout
+
+\begin_layout LyX-Code
+   $guess = <STDIN>; 
+\end_layout
+
+\begin_layout LyX-Code
+  chomp ($guess); 
+\end_layout
+
+\begin_layout LyX-Code
+   while ($guess ne $secretword) { 
+\end_layout
+
+\begin_layout LyX-Code
+      print "Error!, trata de nuevo, cual es la palabra secreta? "; 
+\end_layout
+
+\begin_layout LyX-Code
+    $guess = <STDIN>; 
+\end_layout
+
+\begin_layout LyX-Code
+    chomp ($guess); 
+\end_layout
+
+\begin_layout LyX-Code
+   }
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Ejercicios.
+\end_layout
+
+\begin_layout Standard
+Teclea los programas mostrados en este capitulo y verifica que corran correctame
+nte, no olvides que para hacerlos ejecutables tenemos que ejecutar el comando:
+\end_layout
+
+\begin_layout LyX-Code
+chmod a+x <archivo>
+\end_layout
+
+\begin_layout Standard
+o ejecutarlo invocando directamente al interprete de perl ej: 
+\end_layout
+
+\begin_layout LyX-Code
+perl -w <archivo>
+\end_layout
+
+\begin_layout Section
+Datos Escalares
+\end_layout
+
+\begin_layout Subsection
+Datos escalares?
+\end_layout
+
+\begin_layout Standard
+Un 
+\series bold
+escalar
+\series default
+ es la forma mas simple de datos que Perl manipula.
+ Este puede ser un numero ( como 4 o 3.25e20) o una cadena de caracters (
+ como hola, etc).
+ Las operaciones con escalares siempre llevan a un escalar como resultado.
+\end_layout
+
+\begin_layout Subsubsection
+Tipos de variables
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+FIZZLE
+\series default
+ - Un apuntador de archivo o un apuntador de directorio 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+$FIZZLE
+\series default
+ - Una variable escalar 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+@FIZZLE -
+\series default
+ Un arreglo indexado por numero 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+%FIZZLE
+\series default
+ - Un arreglo asociativo (hash)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+&FIZZLE
+\series default
+ - Una subrutina 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+*FIZZLE
+\series default
+ - Todo lo que se llame FIZZLE
+\end_layout
+
+\begin_layout Standard
+Ejemplos de variables: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$answer =42; # Entero 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$pi = 3.14159265 # numerico 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$avocados = 6.02e23 # notacion cientifica 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$mascota = 'perro'; # string 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$sign = "Cuidado con el $mascota
+\backslash
+n " # String con interpolacion 
+\end_layout
+
+\begin_layout LyX-Code
+
+\color black
+$curdir = `pwd`; # comando
+\end_layout
+
+\begin_layout Subsection
+Numeros
+\end_layout
+
+\begin_layout Standard
+Aun cuando un numero o una cadena de caracteres son escalares ambos, es
+ util ver los numeros y cadenas de caracteres separadamente, numeros primero,
+ luego los caracteres.
+\end_layout
+
+\begin_layout Subsubsection
+Todos los numeros usan el mismo formato internamente.
+ 
+\end_layout
+
+\begin_layout Standard
+Se pueden especificar ambos enteros ( numeros como 17 o 25 o 342) y numeros
+ de punto flotante ( numeros reales con punto decimal com 3.14192 o 1.332
+ ).
+ Pero internamente,Perl maneja solamente valores de numeros con doble precision
+ de punto flotante.
+ Esto significa que no existen valores enteros internos.
+\end_layout
+
+\begin_layout Subsubsection
+Literales flotantes
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Un literal es la manera en que un valor es respresentado en el texto de
+ un programa de Perl.
+ Tambien se puede llamar a esto una constante en el programa, pero usaremos
+ el termino literal.
+ Los literales son la manera en que los datos son representados en el codigo
+ fuente de tu programa como entrada al compilador de Perl.
+ 
+\end_layout
+
+\begin_layout Standard
+Perl acepta el juego completo de literales de punto flotante disponibles
+ a los programadores de C.
+ Se permiten numeros con o sin punto decimal ( incluyendo el signo menos
+ o mas), asi como elevando a la potencia de 10 o notacion exponencial.
+ Por ejemplo.
+\end_layout
+
+\begin_layout LyX-Code
+1.25        # uno y un cuarto
+\end_layout
+
+\begin_layout LyX-Code
+7.25e45     # 7.25 veces 10 a la 45th potencia 
+\end_layout
+
+\begin_layout LyX-Code
+-6.5e24     # negativo 6.5 veces 10 a la 24th   
+\end_layout
+
+\begin_layout LyX-Code
+-12e-24     # negativo 12 veces 10 a la  -24th 
+\end_layout
+
+\begin_layout LyX-Code
+-1.2E-23    # lo mismo de otra manera
+\end_layout
+
+\begin_layout Subsubsection
+Literales enteros
+\end_layout
+
+\begin_layout Standard
+Los literales enteros no tienen la gran explicacion, como por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+12 15 -200 4 3485
+\end_layout
+
+\begin_layout Standard
+No se debe de iniciar el numero con 0 porque Perl soporta literales octal
+ y hexadecimal.
+ Estos se especifican con un cero al principio como por ejemplo 0x o 0X.
+ Los numeros hexadecimales de A ala F representan numeros convencionales
+ de 10 al 15.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+0377    # 377 octal , lo mismo que 255 decimal 
+\end_layout
+
+\begin_layout LyX-Code
+-0xff   # FF negativo, lo mismo que -255 decimal.
+ 
+\end_layout
+
+\begin_layout Subsection
+Cadenas
+\end_layout
+
+\begin_layout Standard
+Las cadenas son secuencias de caracteres ( como 
+\series bold
+hola
+\series default
+).
+ Cada caracter tiene un valor de 8 bits de un set de caracteres de 256,
+ ( no hay nada especial en el caracter NULL como en algunos lenguajes).
+\end_layout
+
+\begin_layout Standard
+La cadena mas corta no tiene caracteres.
+ La cadena mas larga puede llenar toda la memoria disponible, esto se basa
+ en el principio de 
+\begin_inset Quotes eld
+\end_inset
+
+no limites internos
+\begin_inset Quotes erd
+\end_inset
+
+ que perl sigue en cada oportunidad.
+ Las cadenas tipicas son secuencias imprimibles de letras y numeros y puntuacion
+es en el rango de ASCII 32 y ASCII 126.
+ Sin embargo , la facilidad de tener un caracter de 0 a 255 en una cadena
+ significa que podemos crear, buscar y manipular datos tanto binarios como
+ cadenas - Lo que algunas otras utilerias tendrian dificultad en hacer.
+ 
+\end_layout
+
+\begin_layout Standard
+Como los numeros, las cadenas tienen dos tipos: cadenas de comillas simples
+ como ('Hola') y cadenas de comillas dobles ( como 
+\begin_inset Quotes eld
+\end_inset
+
+Hola
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsubsection
+Cadenas de comillas simples.
+\end_layout
+
+\begin_layout Standard
+Una cadena de comilla simple es una secuencia de caracteres entre comillas
+ simples.
+ Las comillas simples no son parte de la cadena; estas estan para indicarle
+ a Perl el principio y el fin de la cadena.
+ Cualquier caracter entre comillas.
+ Notese que el caracter 
+\backslash
+n dentro de una cadena de comillas simples no es interpretado como salto
+ de linea, sino como los caracteres backslash y n.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Cadenas de comillas dobles
+\end_layout
+
+\begin_layout Standard
+Una cadena de comilla doble actua como una cadena en C.
+ Esta es una secuencia de caracteres, pero esta vez encerrada en comillas
+ dobles.
+ La diferencia es que en este tipo el backslash tiene una representacion
+ importante al especificar caracteres de control, o aun un caracter octal.
+ He aqui algunos ejemplos:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+Hola mundo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+ # Hola Mundo, y un salto de linea
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+coca
+\backslash
+tsprite
+\begin_inset Quotes erd
+\end_inset
+
+ # Coca tabulador y sprite.
+\end_layout
+
+\begin_layout Standard
+El backslash puede preceder muchos caracteres diferentes para significar
+ diferentes cosas ( tipicamente llamadas secuencias de escape ) he aqui
+ una tabla indicando los caracteres:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="18" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Construccion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Significado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+n
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Salto de linea
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+r
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Retorno
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+t
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tabulador
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+salto de forma
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+b
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Backspace
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+a
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bell
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+e
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Escape
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+007
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cualquier valor ASCII octal
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+x7f
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cualquier valor ASCII hex
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+cC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cualquier carater de control
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+
+\backslash
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Backslash
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comillas dobles
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+l
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minusculas (el sig.
+ caracter)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minusculas (todo el texto hasta 
+\backslash
+E )
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+u
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mayusculas (el sig.
+ caracter)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+U
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mayusculas (todo el texto hasta 
+\backslash
+E)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+Q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Backslash quotas hasta 
+\backslash
+E
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Operadores escalares.
+\end_layout
+
+\begin_layout Standard
+Un operador produce un nuevo valor ( resultado) de uno o mas valores ( los
+ operandos).
+ Por ejemplo: + es un operador porque toma dos numeros ( los operandos,
+ como 5 y 6 ) y produce un nuevo valor ( 11, el resultado).
+\end_layout
+
+\begin_layout Standard
+Los operadores de Perl y expresiones son un superset de los proveidos en
+ otros lenguages tipo ALGOL/Pascal, como C y Java.
+ Un operador espera operadores numericos o de cadena ( o posiblemente una
+ combinacion de ambos).
+ Si proporcionas un operador de cadena donde un numero es esperado, o viceversa,
+ Perl automaticamente convierte el operando utilizando algunas reglas intuitivas.
+ Por ejemplo, si dices:
+\end_layout
+
+\begin_layout LyX-Code
+$camellos = "123"; print $camellos +1, "
+\backslash
+n";
+\end_layout
+
+\begin_layout Standard
+El valor original es una cadena , pero para efecto de hacer la suma es convertid
+o automaticamente en un numero, sumado, y entonces convertido de vuelta
+ en cadena de caracteres.
+\end_layout
+
+\begin_layout Subsubsection
+Operadores para numeros.
+ 
+\end_layout
+
+\begin_layout Standard
+Perl provee los operadores tipicos de suma, resta, multiplicacion y division,
+ por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+2+ 3            # 2 mas 3
+\end_layout
+
+\begin_layout LyX-Code
+5.1 - 2.4       # 5.1 menos 2.4
+\end_layout
+
+\begin_layout Standard
+Adicionalmente, Perl provee un operador tipo FORTRAN, este operador es el
+ representado por el doble asterisco, como 2**3.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Operadores de comparacion.
+\end_layout
+
+\begin_layout Standard
+Los operadores de comparacion son aquellos utilizados en las pruebas de
+ los dos tipos de escalares, a saber:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prueba numerica
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prueba de cadena
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Significado
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+==
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eq
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Igual a
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+!=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ne
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No igual a
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+>
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+gt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mayor que
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+>=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mayor o igual
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+<
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Menor que
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+<=
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+le
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Menor o igual
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sumario de operadores escalares.
+\end_layout
+
+\begin_layout Standard
+Perl tiene muchos operadores, una buena cantidad es derivada del lenguage
+ C.
+ De hecho los unicos operadores que no tiene son los de casting (*), los
+ de direccionamiento (&) y operadores de miembros de estructura ( .
+ y ->) he aqui algunos de ellos.
+\end_layout
+
+\begin_layout Paragraph
+busqueda de patrones
+\end_layout
+
+\begin_layout LyX-Code
+$a =~ /pat/ concordancia verdadero si $a contiene un patron.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$a =~ s/p/r  substitucion  Reemplaza ocurrencias de p con r en $a 
+\end_layout
+
+\begin_layout LyX-Code
+$a =~ tr/a-z/A-Z/ Traslacion translada los caracteres correspondientes.
+\end_layout
+
+\begin_layout Paragraph
+operadores logicos
+\end_layout
+
+\begin_layout LyX-Code
+$a && $b  And  verdadero si $a es verdadero y $b es verdadero 
+\end_layout
+
+\begin_layout LyX-Code
+$a || $b  Or $a si $a es verdadero,de otra manera $b 
+\end_layout
+
+\begin_layout LyX-Code
+! $a  Not  Verdadero si $a es falso.
+\end_layout
+
+\begin_layout Paragraph
+Operadores aritmeticos.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$a + $b  Suma  la suma de $a y $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a - $b Resta  la diferencia de $a y $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a * $b Multiplicacion el producto de a$ veces $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a / $b division el cociente de a$ dividido entre $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a % %b modulo  el residuo de $a dividido entre $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a ** $b exponente $a elevado a la potencia de $b 
+\end_layout
+
+\begin_layout LyX-Code
+++$a,$a++ autoincremento suma 1 a $a 
+\end_layout
+
+\begin_layout LyX-Code
+--$a,$a-- autodecremento resta 1 a $a 
+\end_layout
+
+\begin_layout LyX-Code
+rand($a) random  un numero aleatorio en el rango de 0..$a
+\end_layout
+
+\begin_layout Paragraph
+Operadores de cadena.
+\end_layout
+
+\begin_layout LyX-Code
+$a .
+ $b  concatenacion valores de $a y $b como una sola cadena.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$a x $b  repeticion el valor de $a concatenado $b veces.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+substr($a,$o,$l) subcadena subcadena en el offset $o del largo $l 
+\end_layout
+
+\begin_layout LyX-Code
+index($a,$b) indice  Offset de la cadena $b en el string $a
+\end_layout
+
+\begin_layout Paragraph
+Operadores de asignacion
+\end_layout
+
+\begin_layout LyX-Code
+$a = $b  asignacion $a obtiene el valor de $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a += $b suma   incrementa $a por $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a -= $b  resta de  decrementa $a por $b 
+\end_layout
+
+\begin_layout LyX-Code
+$a .= $b agregacion agrega la cadena $b a $a
+\end_layout
+
+\begin_layout Paragraph
+Operadores de archivo.
+\end_layout
+
+\begin_layout LyX-Code
+-r $a  legible  verdadero si el archivo $a es legible 
+\end_layout
+
+\begin_layout LyX-Code
+-w $a  escribible verdadero si el archivo $a es escribible 
+\end_layout
+
+\begin_layout LyX-Code
+-d $a   directorio verdadero si el archivo $a es un directorio 
+\end_layout
+
+\begin_layout LyX-Code
+-f $a   archivo  verdadero si el archivo $a es un archivo 
+\end_layout
+
+\begin_layout LyX-Code
+-T $a  archivo texto verdadero si el arcihvo $a es un archivo texto
+\end_layout
+
+\begin_layout Subsubsection
+Variables escalares.
+\end_layout
+
+\begin_layout Standard
+Una variable es un contenedor que puede tener uno mas valores, los ejemplos
+ son muy sencillos: 
+\end_layout
+
+\begin_layout LyX-Code
+$esta_es_una_variable_escalar
+\end_layout
+
+\begin_layout LyX-Code
+$esta_es_otra
+\end_layout
+
+\begin_layout Standard
+El limite de tamaño es de 255, que la mayoria de las veces es suficiente.
+\end_layout
+
+\begin_layout Quotation
+tip: trata de utilizar nombres descriptivos para tus variables.
+\end_layout
+
+\begin_layout Subsubsection
+Operadores escalares y funciones
+\end_layout
+
+\begin_layout Standard
+La operacion mas sencilla en una variable escalar es la asignacion, la cual
+ es la manera de dar un valor a una variable.
+ Las operaciones de asignacion de efectuan de la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+$a = 17; # a=17
+\end_layout
+
+\begin_layout LyX-Code
+$b = $a + 3; # da a$ el valor de a$ mas 3.
+\end_layout
+
+\begin_layout Standard
+Es facil darse cuenta que las variables tiene el operador $ precediendo
+ a la variable, este operador es tambien utilizado en el shell, pero para
+ efecto de asignacion se omite y se usa solo para obtener el valor de la
+ variable, es conveniente entonces no olvidar que en Perl es necesario usarlo
+ siempre.
+\end_layout
+
+\begin_layout Subsubsection
+Operadores de asignacion binaria
+\end_layout
+
+\begin_layout Standard
+Las expresiones tales como $a = a$ + 5 ocurren tan frecuentemente en Perl
+ que existe una via corta, tal como en C, el equivalente seria: 
+\end_layout
+
+\begin_layout LyX-Code
+a$+=5;
+\end_layout
+
+\begin_layout Standard
+asimismo, existen otro tipo de operadores adicionales tales como:
+\end_layout
+
+\begin_layout LyX-Code
+a$-=5;             # resta 5
+\end_layout
+
+\begin_layout LyX-Code
+a$*=5;             # multiplica por 5
+\end_layout
+
+\begin_layout LyX-Code
+a$/=5;             # divide entre 5
+\end_layout
+
+\begin_layout LyX-Code
+a$**=5;            # eleva a la potencia de 5
+\end_layout
+
+\begin_layout LyX-Code
+$a.= 
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+         # agrega la cadena 
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Quotation
+Indicando operadores de resta,multiplicacion y division y otros.
+\end_layout
+
+\begin_layout Subsubsection
+Autoincremento y Autodecremento
+\end_layout
+
+\begin_layout Standard
+Como si no fuera suficientemente facil, existen otros operadores adicionales,
+ los de autoincremento y autodecremento, 
+\end_layout
+
+\begin_layout Standard
+los cuales se expresan de la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+$a++; # Incrementa $a en 1
+\end_layout
+
+\begin_layout LyX-Code
+$a--; # Decrementa $a en 1
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Quotation
+El autoincremento funciona aun en cadenas.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Las funciones chop y chomp.
+\end_layout
+
+\begin_layout Standard
+Una funcion integrada muy util es chop.
+ Esta funcion toma un solo argumento dentro de sus parentesis, el nombre
+ de la variable escalar, y remueve el ultimo caracter de la cadena.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$x = 
+\begin_inset Quotes eld
+\end_inset
+
+Hola Mundo
+\begin_inset Quotes erd
+\end_inset
+
+; chop($); # $x es ahora 
+\begin_inset Quotes eld
+\end_inset
+
+Hola Mund
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+si le damos un valor vacio , entonces no regresa nada ni da error.
+ 
+\end_layout
+
+\begin_layout Standard
+Esta funcion es util para remover el caracter de salto de linea '
+\backslash
+n' , pero corremos el riesgo de remover por error un caracter que es util,
+ en esos casos utilizaremos la funcion chomp(), la cual solo remueve el
+ caracter de salto de linea.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Interpolacion de escalares en cadenas.
+\end_layout
+
+\begin_layout Standard
+Cuando una cadena tiene comillas dobles, es sujeta a interpolacion de variables.
+ Esto significa que la cadena es escaneada por posibles valores de variables
+ escalares, un signo de dolar seguido por letras, digitos.
+ Cuando una variable referenciada es encontrada, esta es reemplazada por
+ su valor actual.
+ ej.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$a= 
+\begin_inset Quotes eld
+\end_inset
+
+fred
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+$b =
+\begin_inset Quotes erd
+\end_inset
+
+texto en $a
+\begin_inset Quotes erd
+\end_inset
+
+ # el valor interpolado
+\end_layout
+
+\begin_layout Subsection
+<STDIN> como un valor escalar.
+\end_layout
+
+\begin_layout Standard
+Hasta este punto, si eres un programador experimentado, probablemente te
+ preguntaras como obtener un valor en un programa de Perl.
+ He aqui la manera mas simple.
+ Cada vez que se usa <STDIN> en un lugar donde un escalar debe de estar,
+ Perl lee la siguiente entrada estandar ( hasta el primer salto de linea),
+ y usa ese valor como <STDIN>.
+\end_layout
+
+\begin_layout Standard
+<STDIN> significa muchas cosas, pero a menos que se haga algo extraño regularmen
+te significara una entrada de la terminal.
+ Si no existe algo esperando a ser leido ( en el buffer) , Perl espera a
+ que teclees algo, hasta que presiones la tecla de entrada.
+ El valor de <STDIN> regularmente trae un salto de linea al final del mismo,
+ y regularmente querremos deshacernos de el , y para eso utilizaremos la
+ funcion chomp(), como en el siguiente ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$a = <STDIN>; # Obtener el texto
+\end_layout
+
+\begin_layout LyX-Code
+chomp($a);    # Nos deshacemos del caracter '
+\backslash
+n'
+\end_layout
+
+\begin_layout Standard
+Eso hara el trabajo por nosotros.
+\end_layout
+
+\begin_layout Subsection
+Salida con print()
+\end_layout
+
+\begin_layout Standard
+Asi que, leemos cosas con <STDIN>.
+ Como imprimimos?, con la funcion print.
+ Esta funcion toma los valores dentro de sus parentesis y las pone sin embelleci
+miento a la salida estandar.
+ De nuevo, a menos que hagas algo extraño esta sera tu terminal.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+print(
+\begin_inset Quotes eld
+\end_inset
+
+Hola Mundo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+); # Decimos hola al mundo , seguido por un caracter de salto de linea.
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Hola Mundo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+ ; # Lo mismo.
+\end_layout
+
+\begin_layout Standard
+Notemos que el segundo ejemplo imprime lo mismo sin parentesis, Perl permite
+ la no especificacion de parentesis para sus funciones internas , pero por
+ regla general es necesario pare efectos de evitar ambiguedades.
+\end_layout
+
+\begin_layout Subsection
+El valor indefinido.
+\end_layout
+
+\begin_layout Standard
+¿Que pasa si usas una variable escalar antes de darle un valor?.
+ Nada serio, y definitivamente, nada fatal.
+ Las variables tiene un valor de undef antes de ser asignadas.
+ Este valor es como el cero cuando se usa como un numero o una cadena vacia
+ cuando se usa como cadena.
+ Si utilizamos la invocacion perl -w sin embargo obtendremos un warning,
+ lo cual es una buena manera de atrapar los errores.
+\end_layout
+
+\begin_layout Standard
+Muchos operadores regresan undef cuando los argumentos estan fuera de rango
+ o no hacen sentido.
+ 
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que calcule la circunferencia de un circulo con radio
+ de 12.5.
+ La circunferencia es 2 veces el radio, o cerca de 2 veces 3.141592654 veces
+ el radio.
+\end_layout
+
+\begin_layout Enumerate
+Modifique el programa del ejercicio anterior para preguntar y aceptar el
+ radio de la persona que corre el programa.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que pregunte y lea dos numeros, e imprima el resultado
+ de dos numeros multiplicados entre si.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una cadena y un numero, e imprima la cadena
+ el numero de veces indicado por el numero de lineas separadas.
+ ( tip: utilice el operador 
+\begin_inset Quotes erd
+\end_inset
+
+x
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Arreglos
+\end_layout
+
+\begin_layout Subsection
+¿Que es una lista o arreglo?
+\end_layout
+
+\begin_layout Standard
+Una lista son datos escalares ordenados.
+ Un arreglo es una variable que contiene una lista.
+ Cada elemento del arreglo es una variable escalar separada con un valor
+ escalar independiente.
+ Estos valores estan ordenados, es decir, tienen una secuencia particular
+ de menor a mayor.
+ 
+\end_layout
+
+\begin_layout Standard
+Los arreglos pueden tener cualquier numero de elementos.
+ El arreglo mas pequeño no tiene elementos, mientras que el arreglo mas
+ grande puede llenar completamente la memoria, nuevamente siguiendo la filosofia
+ de Perl de 
+\begin_inset Quotes eld
+\end_inset
+
+no limites innecesarios
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perl tiene muchos operadores que hacen cosas con listas.
+ Mucho del poder de perl viene de la capacidad de procesar multiples items
+ con un solo comando, y muchos de los problemas en el mundo real son solucionado
+s naturalmente con una lista.
+\end_layout
+
+\begin_layout Standard
+Una lista es un set ordenado de escalares.
+ Los cuales ya sabemos que son no?.
+\end_layout
+
+\begin_layout Standard
+La lista puede ser una lista de numeros, cadenas, o una mezcla de ambos.
+ Algunas listas son con nombre y las llamaremos "arreglos".
+ Otras listas son simplemente valores que son pasados de una operacion a
+ otra y las llamaremos "valores de arreglos" o "listas", dado que los valores
+ en una lista estan ordenados, hace sentido hablar acerca del primero ,
+ segundo y hasta el ultimo, etc.
+ Un ejemplo de estos serian los argumentos de la linea de comandos que son
+ copiados en el arreglo @ARGV de tal manera que:
+\end_layout
+
+\begin_layout Standard
+$ARGV[0] es el primer argumento, y: $ARGV[$#ARGV] es el ultimo.
+ 
+\end_layout
+
+\begin_layout Standard
+La construccion de listas en perl es simplemente una coma, usada entre cada
+ elemento de la lista.
+ 
+\end_layout
+
+\begin_layout Standard
+Un ejemplo de una lista seria la siguiente:
+\end_layout
+
+\begin_layout LyX-Code
+'primero','segundo','tercero', 'cuarto'
+\end_layout
+
+\begin_layout LyX-Code
+o: 1,2,3,4
+\end_layout
+
+\begin_layout Standard
+Uno de los lugares en donde Perl busca por una lista es dentro de los parentesis
+, de tal manera que podriamos utilizar una lista para inicializar un arreglo
+ entero de la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+@colores = ($rojo,$verde,$azul); @cuenta = (1,2,3,4,5,6);
+\end_layout
+
+\begin_layout Standard
+Una lista por parentesis que esta compuesta enteramente por nombres puede
+ ser asignada al valor de cualquier cosa que regrese un valor de lista.
+\end_layout
+
+\begin_layout LyX-Code
+($rojo,$verde,$azul) = (0..2); ($nombre,$pw,$gid,$gcos,$home,$shell) = split(/:/,<
+PASSWD>);
+\end_layout
+
+\begin_layout Quotation
+El operador ..
+ regresa una lista de numeros de 1 a 2.
+ 
+\end_layout
+
+\begin_layout Subsection
+Operaciones con arreglos.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Acceso a los elementos del arreglo.
+\end_layout
+
+\begin_layout Standard
+Hasta ahora hemos tratado a los arreglos como un todo, agregando y removiendo
+ valores al hacer asignaciones de arreglos.
+ Muchos programas utiles se escriben usando arreglos sin siquiera utilizar
+ un elemento especifico del arreglo.
+ Sin embargo, perl provee una funcion de subscripcion tradicional para accesar
+ un elemento del arreglo por indice numerico.
+\end_layout
+
+\begin_layout Standard
+Estos son numerados utilizando enteros secuenciales, empezando en cero e
+ incrementando en uno para cada elemento.
+ El primer elemento del arreglo @arreglo es accesado como $arreglo[0].
+ Notese que el @ en el arreglo se convierte en un $ en el elemento de referencia
+, esto se hace por razones obvias.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplos: 
+\end_layout
+
+\begin_layout LyX-Code
+@fred = (7,8,9);
+\end_layout
+
+\begin_layout LyX-Code
+$b=$fred[0]; # da a $b el valor de 7
+\end_layout
+
+\begin_layout LyX-Code
+$fred[0]=5; # ahora fred es (5,8,9)
+\end_layout
+
+\begin_layout Subsubsection
+Las funciones push y pop
+\end_layout
+
+\begin_layout Standard
+Un uso comun en un arreglo es como una pila de informacion, donde nuevos
+ valores se agregan y remueven del lado derecho de la lista.
+ Estas operaciones ocurren con suficiente frecuencia para tener sus propias
+ funciones especiales:
+\end_layout
+
+\begin_layout LyX-Code
+push(@lista,$valor) # Inserta un nuevo valor en mi listas.
+\end_layout
+
+\begin_layout LyX-Code
+pop(@lista); # Remueve el ultimo elemento de mi lista
+\end_layout
+
+\begin_layout Subsubsection
+Las funciones shift y unshift
+\end_layout
+
+\begin_layout Standard
+Las funciones push y pop hacen cosas con el lado derecho de una lista, similarme
+nte, las funciones shift y unshift ejecutan las funciones correspondientes
+ en el lado izquierdo de una lista.
+ 
+\end_layout
+
+\begin_layout Standard
+He aqui algunos ejemplos:
+\end_layout
+
+\begin_layout LyX-Code
+unshift(@lista,$a);     # como @lista=($a,@fred) inserta un nuevo valor
+ del lado izquierdo de la lista
+\end_layout
+
+\begin_layout LyX-Code
+x$ = shift(@lista)      # remueve el primer elemento de la lista y la inserta
+ en $x
+\end_layout
+
+\begin_layout Subsubsection
+La funcion reverse.
+\end_layout
+
+\begin_layout Standard
+La funcion reverse reversa el orden de los elementos de su argumento, regresando
+ la lista resultante.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+@a=(7,8,9);             # el valor de @a
+\end_layout
+
+\begin_layout LyX-Code
+@b=reverse(@a);         # da a @b el valor (9,8,7).
+\end_layout
+
+\begin_layout Subsubsection
+La funcion sort
+\end_layout
+
+\begin_layout Standard
+La funcion sort toma los argumentos y los ordena como si fueran simples
+ cadenas en orden ascendente ASCII.
+ Regresa la lista ordenada sin alterar el valor original de la lista.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+@x = sort(
+\begin_inset Quotes eld
+\end_inset
+
+small
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+medium
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+large
+\begin_inset Quotes erd
+\end_inset
+
+      # @x obtiene 
+\begin_inset Quotes eld
+\end_inset
+
+large
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+medium
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+small
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+El ordenamiento de numeros no pasa numericamente, pero por valores de cadenas
+ de cada numero ( 1,16,2,32 etc).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+La funcion chomp.
+\end_layout
+
+\begin_layout Standard
+La funcion chomp funciona con una variable de arreglo asi como sobre un
+ valor escalar.
+ Cada separador de registro de cada elemento es removido.
+ por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+@stuff=(
+\begin_inset Quotes eld
+\end_inset
+
+Hola
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+mundo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+dias felices
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout LyX-Code
+chomp(@stuff); # @stuff es ahora (
+\begin_inset Quotes eld
+\end_inset
+
+Hola
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+mundo
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+dias felices
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de cadenas de caracteres en lineas
+ separadas y escriba la lista al reves.
+ Si se esta leyendo la lista de la terminal, probablemente necesitas delimitar
+ el final de la lista presionando el caracter de fin de archivo, probablemente
+ CTRL-D bajo UNIX, o CTRL-Z en otros sistemas operativos.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea un numero y entonces una lista de caracteres
+ ( todos en lineas separadas), y las imprima de acuerdo a una seleccion
+ hecha por numero.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de cadenas de caracteres y seleccione
+ e imprima una cadena aleatoria de la lista.
+ Para seleccionar un elemento aleatorio de @arreglo, utilice srand; al principio
+ del programa ( esto inicializa al generador de numeros aleatorios) , y
+ entonces utilice userand(@arreglo), donde se necesita un valor aleatorio
+ entre cero y uno menor que la longitud de @arreglo.
+\end_layout
+
+\begin_layout Section
+Estructuras de control
+\end_layout
+
+\begin_layout Subsection
+Bloques de sentencias.
+\end_layout
+
+\begin_layout Standard
+Un bloque de sentencia es una secuencia de sentencias, encerrada entre braces.
+ Algo parecido a esto:
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+primera_sentencia; 
+\end_layout
+
+\begin_layout LyX-Code
+segunda_sentencia;
+\end_layout
+
+\begin_layout LyX-Code
+tercera_sentencia; 
+\end_layout
+
+\begin_layout LyX-Code
+....
+ ultima_sentencia
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Perl ejecuta cada sentencia en secuencia, desde el principio hasta el fin.
+ El semicolon final es opcional.
+ 
+\end_layout
+
+\begin_layout Subsection
+La sentencia if/unless
+\end_layout
+
+\begin_layout Standard
+Lo siguiente en complejidad es la sentencia if.
+ Esta construccion toma una expresion de control ( evaluada por su resultado
+ verdadero) y un bloque.
+ Opcionalmente puede tener un else seguido por un bloque tambien.
+ En otras palabras, se parece a esto:
+\end_layout
+
+\begin_layout LyX-Code
+if (expresion)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_verdadera_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_verdadera_2;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_verdadera_3;
+\end_layout
+
+\begin_layout LyX-Code
+} else
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_falsa_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_falsa_2
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Durante la ejecucion , Perl evalua la expresion de control.
+ Si la expresion es verdadera, se ejecuta el primer bloque de control, si
+ la expresion es falsa, el segundo bloque.
+ 
+\end_layout
+
+\begin_layout Standard
+La evaluacion de no se hace a nivel boleano sino a nivel de cadena, de tal
+ manera que si la cadena resultante esta vacia o consiste del caracter 0,
+ entonces el valor de la expresion es falso, y cualquier cosa que no sea
+ asi resulta verdadero automaticamente.
+ He aqui algunos ejemplo de interpretacion:
+\end_layout
+
+\begin_layout LyX-Code
+0          # convierte a 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+, asi que falso
+\end_layout
+
+\begin_layout LyX-Code
+1-1        # convierte a 0 y a 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ asi que falso
+\end_layout
+
+\begin_layout LyX-Code
+1          # convierte a 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+, verdadero
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+       # cadena vacia, falso
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+      # no 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ asi que verdadero
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+00
+\begin_inset Quotes erd
+\end_inset
+
+     # no 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ , verdadero
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Quotes eld
+\end_inset
+
+0.000
+\begin_inset Quotes erd
+\end_inset
+
+  # no 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+0
+\begin_inset Quotes erd
+\end_inset
+
+ , verdadero 
+\end_layout
+
+\begin_layout Standard
+Aqui tenemos un ejemplo de una linea completa:
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa de ejemplo 
+\end_layout
+
+\begin_layout LyX-Code
+# ej.pl
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Cual es tu edad?
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+$a = <STDIN>;
+\end_layout
+
+\begin_layout LyX-Code
+chomp a$;
+\end_layout
+
+\begin_layout LyX-Code
+if ($a < 18) 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+No tienes edad para votar
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+La sentencia while/until
+\end_layout
+
+\begin_layout Standard
+No existe lenguage que este complete con alguna forma de iteracion.
+ Perl puede iterar utilizando la sentenci while.
+\end_layout
+
+\begin_layout LyX-Code
+while (expresion)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Para ejecutar esta sentencia, Perl evalua la expresion de control, mientras
+ su valor sea verdadero, el cuerpo del while es evaluado una vez.
+ Esto se repite hasta que la expresion de control se vuelva falsa, hecho
+ lo cual Perl continua con la sentencia siguiente despues del ciclo while.
+ Por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa while de ejemplo.
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Que edad tienes?
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+$a = <STDIN>;
+\end_layout
+
+\begin_layout LyX-Code
+chomp($a);
+\end_layout
+
+\begin_layout LyX-Code
+while($a > 0)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Una vez , tuviste $a años
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+$a--;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Algunas veces es mas facil decir 
+\begin_inset Quotes eld
+\end_inset
+
+Hasta que algo sea verdadero
+\begin_inset Quotes erd
+\end_inset
+
+ en lugar de 
+\begin_inset Quotes eld
+\end_inset
+
+mientras no sea verdadero
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Una vez mas podemos hacerlo.
+ Al reemplazar la sentencia con until obtenemos el resultado deseado:
+\end_layout
+
+\begin_layout LyX-Code
+until ( expresion)
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Algunas veces el loop nunca llegara a ser verdadero o falso y podria depender
+ de los resultados que querramos, este podria ser algun demonio que deseemos
+ correr para siempre.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+La sentencia do {} while/until
+\end_layout
+
+\begin_layout Standard
+La sentencia while/until es una condicion al principio de cada ciclo, antes
+ de entrar al ciclo.
+ Si la condicion fue falsa antes de ser verificado, el ciclo no sera ejecutado
+ nunca 
+\end_layout
+
+\begin_layout Standard
+Pero algunas veces no queremos probar la condicion al principio del ciclo.
+ En lugar de eso, queremos probarlo al final.
+ Perl provee el ciclo do {} while para este efecto.
+ Este seria:
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+} while expresion
+\end_layout
+
+\begin_layout Standard
+De esta manera, Perl ejecuta al menos una vez las sentencias antes de probar
+ la vericidad de la condicion.
+ 
+\end_layout
+
+\begin_layout Standard
+Como en las sentencias anteriores se puede invertir la condicion utilizando
+ do {} until en vez de do {} while.
+ La expresion es aun probada al final, pero su sentido se invierte.
+ Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+# Programa de do/until
+\end_layout
+
+\begin_layout LyX-Code
+$alto=0;
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_layout LyX-Code
+$alto++;
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Siguiente parada
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+chomp($sitio = <STDIN>);
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+until $alto > 5 || $location eq 'home';
+\end_layout
+
+\begin_layout Subsection
+La sentencia for 
+\end_layout
+
+\begin_layout Standard
+Otra iteracion es la sentencia for, la cual trabaja similar a C o Java.
+\end_layout
+
+\begin_layout LyX-Code
+for ( expresion_inicial; prueba_expresion; reini_expresion)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_3;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+A continuacion un ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+for($i=1;$i<=10;$i++)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+$i 
+\begin_inset Quotes eld
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Inicialmente la variable se pone a 1, despues se compara con 10 y finalmente
+ se incrementa, sucesivamente hasta llegar a 10.
+ 
+\end_layout
+
+\begin_layout Subsection
+la sentencia foreach
+\end_layout
+
+\begin_layout Standard
+Otra construccion de interacion es la sentencia foreach.
+ Esta sentencia toma una lista de valores y las asigna una a la vez, a un
+ valor escalar, ejecutando un bloque de codigo para cada iteracion.
+ Luce asi:
+\end_layout
+
+\begin_layout LyX-Code
+foreach $i (@lista)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Un ejemplo practico seria:
+\end_layout
+
+\begin_layout LyX-Code
+@a = (1,2,3,4,5);
+\end_layout
+
+\begin_layout LyX-Code
+foreach $b (reverse @a)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+print @b;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+El resultado del programa es 54321.
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que pregunte por la temperatura exterior, e imprima
+ 
+\begin_inset Quotes eld
+\end_inset
+
+demasiado caliente
+\begin_inset Quotes erd
+\end_inset
+
+ si la temperatura esta arriba de 30 grados, y 
+\begin_inset Quotes eld
+\end_inset
+
+muy frio
+\begin_inset Quotes erd
+\end_inset
+
+ de otra manera.
+\end_layout
+
+\begin_layout Enumerate
+Modifique el programa del ejercicion anterior de tal manera que imprima
+ 
+\begin_inset Quotes eld
+\end_inset
+
+muy caliente
+\begin_inset Quotes erd
+\end_inset
+
+ si la temperatura esta arriba de 32 grados, 
+\begin_inset Quotes eld
+\end_inset
+
+muy frio
+\begin_inset Quotes erd
+\end_inset
+
+ si la temperatura esta abajo de 17 grados y 
+\begin_inset Quotes eld
+\end_inset
+
+justo!
+\begin_inset Quotes erd
+\end_inset
+
+ si esta entre 17 y 32.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de numeros ( en lineas separadas)
+ hasta que se lea el numero 999, y entonces que imprima el total de numeros
+ sumados.
+ ( sin sumar el 999!).
+ Por ejemplo , si se teclea 1,2,3 y 999 el programa debe de regresar con
+ la respuesta de 6 (1+2+3).
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de cadenas en lineas separadas e imprima
+ la lista de cadenas en orden invertido - sin utilizar la funcion reverse().
+ (recuerde que <STDIN> va a leer una lista de cadenas en lineas separadas
+ cuando se utiliza en un contexto de arreglo.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que imprima una tabla de numeros y sus raices cuadradas
+ de cero a 32.
+ Busque una manera de no tener todos los numeros del 0 al 32 en una lista,
+ y entonces trate de hacerlo tambien asi.
+ (tip: para que se vea bien: printf 
+\begin_inset Quotes eld
+\end_inset
+
+%5g %8g
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+, a$,b$ , imprime a$ como un numero de 5 columnas y b$ como uno de 8.
+ )
+\end_layout
+
+\begin_layout Section
+Arreglos asociativos
+\end_layout
+
+\begin_layout Subsection
+Que es un hash? ( arreglo asociativo).
+\end_layout
+
+\begin_layout Standard
+El termino 
+\begin_inset Quotes eld
+\end_inset
+
+hash
+\begin_inset Quotes erd
+\end_inset
+
+ ( o arreglo asociativo), es el de una coleccion de datos escalares, con
+ elementos individuales seleccionados por algun valor de indice.
+ Al contrario de una lista, los valores del indice de un hash son enteros
+ no negativos, aunque arbitrarios.
+ Esos escalares (llamados llaves) se usan para obtener los valores del arreglo.
+ 
+\end_layout
+
+\begin_layout Standard
+Los elementos de un hash no tienen un orden en particular.
+ Consideremoslosen lugar de un mazo de cartas.
+ La parte media alta de cada carta es la llave, y la parte media inferior
+ es el valor.
+ Cada vez que se pone un valor en el hash, una nueva carta se crea.
+ Mas tarde, cuando se quiera modificar el valor, le das la llave y Perl
+ encuentra la carta correcta.
+ Asi que el orden de las cartas es inmaterial.
+ De hecho , Perl almacena las cartas ( la pareja de valores clave ) en un
+ orden interno especial que hace facil encontrar una carta especifica, de
+ manera que perl no tenga que ver a traves de todos los pares para encontrar
+ el correcto, y no se puede controlar el orden.
+\end_layout
+
+\begin_layout Subsection
+Variables hash
+\end_layout
+
+\begin_layout Standard
+Una variable 
+\begin_inset Quotes eld
+\end_inset
+
+hash
+\begin_inset Quotes erd
+\end_inset
+
+ es un signo de porcentaje (%) seguido por una letra, seguida por cero o
+ mas letras,digitos y underscores.
+ En otras palabras, la parte despues de porcentaje es como lo que temiamos
+ para nombres de variables y arreglos escalares.
+ 
+\end_layout
+
+\begin_layout Standard
+Cada elemento del hash es una variable escalara , accesada por un indice
+ de cadena, llamada llave.
+ 
+\end_layout
+
+\begin_layout Standard
+Como con los arreglos , se crean nuevos elementos simplemente asignandolos
+ a un elemento hash:
+\end_layout
+
+\begin_layout LyX-Code
+$fred{
+\begin_inset Quotes eld
+\end_inset
+
+aaa
+\begin_inset Quotes erd
+\end_inset
+
+} = 
+\begin_inset Quotes eld
+\end_inset
+
+bbb
+\begin_inset Quotes erd
+\end_inset
+
+;   # creamos la llave 
+\begin_inset Quotes eld
+\end_inset
+
+aaa
+\begin_inset Quotes erd
+\end_inset
+
+, valor 
+\begin_inset Quotes eld
+\end_inset
+
+bbb
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+$fred{234.5} = 456.7;       # crea la llave 
+\begin_inset Quotes eld
+\end_inset
+
+234.5
+\begin_inset Quotes erd
+\end_inset
+
+, valor 456.7 
+\end_layout
+
+\begin_layout Standard
+Estas lineas crean dos elementos en el hash.
+ Accesos subsecuentes al mismo elemento ( usando la misma llave) regresa
+ el valor previamente almacenado.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+print $fred{
+\begin_inset Quotes eld
+\end_inset
+
+aaa
+\begin_inset Quotes erd
+\end_inset
+
+} # imprime 
+\begin_inset Quotes eld
+\end_inset
+
+bbb
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$fred{234.5} +=3; # genera el valor 459.7
+\end_layout
+
+\begin_layout Standard
+El referenciar a un elemento no existente regresa un valor indefinido.
+\end_layout
+
+\begin_layout Subsection
+Representacion literal de un hash .
+\end_layout
+
+\begin_layout Standard
+Se puede desear accesar el hash como un total, ya sea para inicializarlo
+ o copiarlo en otro hash.
+ Perl no tiene realmente una representacion literal para un hash.
+ Cada para de elementos en la lista define una llave y su correspondiente
+ valor.
+ En otras palabras:
+\end_layout
+
+\begin_layout LyX-Code
+@pedro_list = %fred;                     # @pedro_list es asignado a ("aaa","bbb
+","234.5",456.7) 
+\end_layout
+
+\begin_layout LyX-Code
+%pablo = @pedro_list;                    # crea %pablo de %pedro 
+\end_layout
+
+\begin_layout LyX-Code
+%pablo = %pedro;                         # Lo mismo mas rapido
+\end_layout
+
+\begin_layout Standard
+%suave = ("aaa","bbb","234.5",456.7);  # crea %suave como %fred, de valores
+ literales.
+\end_layout
+
+\begin_layout Subsection
+Funciones Hash 
+\end_layout
+
+\begin_layout Standard
+Esta seccion lista algunas funciones hash.
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+keys
+\end_layout
+
+\begin_layout Standard
+La funcion 
+\series bold
+keys(%nombrehash)
+\series default
+ regresa una lista de todas las llaves actuales en el hash %nombrehash.
+ Si no existen elementos en el hash, entonces keys() regresa una lista vacia.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$pedro{"aaa"} = "bbb"; 
+\end_layout
+
+\begin_layout LyX-Code
+$pedro{234.5} = 456.7; 
+\end_layout
+
+\begin_layout LyX-Code
+@lista = keys(%pedro); # @lista obtiene ("aaa",234.5) o # (234.5,"aaa")
+\end_layout
+
+\begin_layout Standard
+Como en otras funciones, el parentesis es opcional: keys %pedro es como
+ keys(%pedro).
+\end_layout
+
+\begin_layout LyX-Code
+foreach $llave (keys (%pedro)) 
+\end_layout
+
+\begin_layout LyX-Code
+{                                             # uno por cada llave de %pedro
+\end_layout
+
+\begin_layout LyX-Code
+print "en $llave tenemos $pedro{$llave}
+\backslash
+n";   # mostrar llave y valores
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Este ejemplo muestra que elementos individuales pueden ser interpolados
+ en cadenas de dobles comillas.
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+Values.
+\end_layout
+
+\begin_layout Standard
+La funcion 
+\series bold
+values(%nombrehash)
+\series default
+ regresa una lista de todos los valores actuales de %nombrehash, en el mismo
+ orden como se regresa por la funcion keys(%nombrehash).
+ 
+\end_layout
+
+\begin_layout Standard
+Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+%apellido=();                   # forzamos %apellido a estar vacio
+\end_layout
+
+\begin_layout LyX-Code
+%apellido{
+\begin_inset Quotes eld
+\end_inset
+
+pedro
+\begin_inset Quotes erd
+\end_inset
+
+} = 
+\begin_inset Quotes eld
+\end_inset
+
+picapiedra
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+%apellido{
+\begin_inset Quotes eld
+\end_inset
+
+pablo
+\begin_inset Quotes erd
+\end_inset
+
+} = 
+\begin_inset Quotes eld
+\end_inset
+
+marmol
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+@apellidos = values(%apellido); # obtenemos los valores
+\end_layout
+
+\begin_layout Standard
+En este punto 
+\series bold
+@apellidos
+\series default
+ contiene ya sea (
+\begin_inset Quotes eld
+\end_inset
+
+picapiedra,
+\begin_inset Quotes erd
+\end_inset
+
+marmol
+\begin_inset Quotes erd
+\end_inset
+
+) o (
+\begin_inset Quotes eld
+\end_inset
+
+marmol
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+picapiedra
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+each
+\end_layout
+
+\begin_layout Standard
+Para iterar sobre un hash entero, utilice keys, buscando por cada llave
+ que regrese para obtener el valor correcto.
+ A pesar de que este metodo es usado frecuentemente, un metodo mas eficiente
+ es utilizar 
+\series bold
+each(%nombrehash)
+\series default
+, el cual regresa un valor de llave como una lista de dos elementos.
+ En cada evaluacion de esta funcion para el mismo hash, el siguiente valor
+ de par sucesivo es regresado hasta que todos los elementos hayan sido accesados
+, cuando no existen mas pares 
+\shape italic
+each
+\shape default
+ regresa una lista vacia.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo: para pasar a traves del hash %apellido del ejemplo anterior , hacemos
+ algo como :
+\end_layout
+
+\begin_layout LyX-Code
+while (($nombre,$ultimo) = each(%apellido))
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+    print 
+\begin_inset Quotes eld
+\end_inset
+
+El apellido de $nombre es $ultimo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+delete
+\end_layout
+
+\begin_layout Standard
+Hasta ahora lo que sabemos es que podemos agregar elementos a un hash ,
+ pero no podemos removerlos ( de otra manera que asignando un valor nuevo
+ al hash entero) .
+ Perl provee la funcion 
+\shape italic
+delete
+\shape default
+ para remover los elementos del hash.
+ El operando delete una referencia a hash, como si estuvieramos buscando
+ por un valor en particular.
+ Perl remueve el par llave-valor del hash.
+ Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+%pedro = ("aaa","bbb",234.5,34.56);  # damos a %pedro dos elementos.
+\end_layout
+
+\begin_layout LyX-Code
+delete $pedro(
+\begin_inset Quotes eld
+\end_inset
+
+aaa
+\begin_inset Quotes erd
+\end_inset
+
+);              # %pedro tiene ahora un par llave-valor
+\end_layout
+
+\begin_layout Subsection
+Dividiendo un hash
+\end_layout
+
+\begin_layout Standard
+Como una variable tipo array , un hash puede ser dividido para accesar una
+ coleccion de elementos en lugar de solamente un elemento al a vez.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$puntos{
+\begin_inset Quotes eld
+\end_inset
+
+pedro
+\begin_inset Quotes erd
+\end_inset
+
+} = 205;
+\end_layout
+
+\begin_layout LyX-Code
+$puntos{
+\begin_inset Quotes eld
+\end_inset
+
+pablo
+\begin_inset Quotes erd
+\end_inset
+
+} = 195;
+\end_layout
+
+\begin_layout LyX-Code
+$puntos{
+\begin_inset Quotes eld
+\end_inset
+
+dino
+\begin_inset Quotes erd
+\end_inset
+
+} = 30;
+\end_layout
+
+\begin_layout Standard
+Podria ser reducido a:
+\end_layout
+
+\begin_layout LyX-Code
+($puntos{
+\begin_inset Quotes eld
+\end_inset
+
+pedro
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+pablo
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+dino
+\begin_inset Quotes erd
+\end_inset
+
+})=(205,195,30);
+\end_layout
+
+\begin_layout Standard
+Lo cual es mucho mas corto.
+ Podemos usar un hash dividido con interpolacion de variables tambien:
+\end_layout
+
+\begin_layout LyX-Code
+@jugadores= qw(pedro pablo dino);
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Los puntos son: @puntos{@jugadores}
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Subsection
+Ejercicios.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una serie de palabras con una palabra por linea
+ hasta el fin de archivo, entonces, que imprima un sumario de cuantas veces
+ cada palabra se ha visto.
+ ( para un mayor grado de dificultad , ordenar las palabras en orden ASCII
+ ascendente en la salida.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea en una cadena, que imprima la cadena y su valor
+ mapeado de acuerdo a los valores presentados en la siguiente tabla: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Entrada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Salida
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rojo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+manzana
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+verde
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hojas
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+azul
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+oceano
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Section
+E/S Basica
+\end_layout
+
+\begin_layout Subsection
+Entrada de 
+\shape italic
+STDIN
+\end_layout
+
+\begin_layout Standard
+Leer de la entrada estandar ( a traves del filehandel llamado STDIN) es
+ facil.
+ Lo hemos estado haciendo ya con la operacion <STDIN>.
+ Evaluandolo en un contexto escalar hariamos lo siguiente:
+\end_layout
+
+\begin_layout LyX-Code
+$a=<STDIN>                 #leemos la siguiente linea
+\end_layout
+
+\begin_layout Standard
+Hasta un caracter de salto de linea, o a lo que hayamos puesto $/.
+\end_layout
+
+\begin_layout Standard
+Evaluandolo en un contexto de lista produce todas las lineas que faltan
+ como una lista: cada elemento es una linea, incluyendo su caracter de terminaci
+on de linea.
+ Esto ya lo vimos , pero que sirva de repaso.
+ Lo representariamos de la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+@a=<STDIN>;
+\end_layout
+
+\begin_layout Standard
+Tipicamente, una cosa que queremos hacer es leer todas las lineas una a
+ la vez y hacer algo con cada linea.
+ Una manera comun de hacerl es:
+\end_layout
+
+\begin_layout LyX-Code
+while (defined($linea=<STDIN>)) 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+     # procesamos $linea aqui
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Mientras que se lea una linea , <STDIN> evalua a un valor definido, y el
+ ciclo continua.
+ Cuando <STDIN> no tiene mas lineas que evaluar regresa 
+\shape italic
+undef
+\shape default
+, terminando el ciclo.
+ 
+\end_layout
+
+\begin_layout Subsection
+Entrada del operador de diamante <>
+\end_layout
+
+\begin_layout Standard
+Otra manera de leer es con el operador de diamante: <>.
+ Este trabaja como <STDIN> en el sentido de que regresa una sola linea en
+ un contexto escalar ( undef si todas las lineas han sido leidas) o todas
+ las lineas restantes si se utiliza en un contexto de lista.
+ Sin embargo, a diferencia de <STDIN>, el operador de diamente obtiene sus
+ datos de el archvo o archivo especificados en la linea de comandos que
+ invoco al programa de Perl.
+ Por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/perl
+\end_layout
+
+\begin_layout LyX-Code
+while(<>)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+   print $_;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Este programa es invocado como: 
+\shape italic
+pgm1 archivo1 archivo2 archivo3 
+\end_layout
+
+\begin_layout Standard
+Cuando el operador de diamante lee cada linea de archivo1 seguido de cada
+ linea de archivo2 y archivo3, regresa undef solamente cuando todas las
+ lineas han sido leidas.
+ 
+\end_layout
+
+\begin_layout Standard
+Tecnicamente, el operador de diamante no ve literalmente los argumentos
+ de la linea de comandos; trabaja a traves del arreglo @ARGV.
+ Este es un arreglo especial inicializadopor el interprete de perl con los
+ argumentos de la linea de comandos.
+ Cada argumendo de linea de comandoj va en un elemento separado del arreglo
+ @ARGV.
+\end_layout
+
+\begin_layout Standard
+Podemos inclusive modificar el funcionamiento del operador de diamante utilizand
+olo como en el siguiente ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+@ARGV= (
+\begin_inset Quotes eld
+\end_inset
+
+aaa
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+bbb
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+ccc
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout LyX-Code
+while(<>)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+ # procesa archivos aaa, bbb y ccc 
+\end_layout
+
+\begin_layout LyX-Code
+ print 
+\begin_inset Quotes eld
+\end_inset
+
+esta linea es:$_
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Subsection
+Salida a STDOUT
+\end_layout
+
+\begin_layout Standard
+Perl utiliza las funciones print y printf para escribir a salida estandar.
+ Vamos a ver como se usa.
+\end_layout
+
+\begin_layout Subsubsection
+Usando 
+\shape italic
+print
+\shape default
+ para salida normal.
+\end_layout
+
+\begin_layout Standard
+Hemos usado ya print para mostrar texto en salida estandar.
+ Vamos a explicar un poco eso.
+\end_layout
+
+\begin_layout Standard
+La funcion print toma una lista de cadenas y envia cada cadena a la salida
+ estandar en turno , sin ninguna intervencion o caracteres adicionados.
+ Lo que puede no ser obvio es que print es realmente una funcion que toma
+ una lista de argumentos, y regresa un valor como cualquier funcion.
+ En otras palabras, 
+\end_layout
+
+\begin_layout Standard
+$a = print
+\begin_inset Quotes erd
+\end_inset
+
+Hola
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+mundo
+\begin_inset Quotes erd
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Standard
+Seria otra manera de decir hola mundo.
+ El valor de regreso es verdadero o falso, indicando el exito o falla de
+ la funcion.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Utilizando 
+\shape italic
+printf
+\shape default
+ para salida formateada.
+ 
+\end_layout
+
+\begin_layout Standard
+Si quisieramos algo mas de control sobre la salida que print provee, utilizariam
+os esta funcion de la misma manera que en el lenguage 
+\begin_inset Quotes eld
+\end_inset
+
+C
+\begin_inset Quotes erd
+\end_inset
+
+.
+ La funcion 
+\shape italic
+printf
+\shape default
+ toma una lista de argumentos, el primer argumento es el formato de control,
+ definiendo como imprimir los argumentos restantes.
+ Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+printf 
+\begin_inset Quotes eld
+\end_inset
+
+%15s %5d %10.2f
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+,$s,$n,$r
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Imprime $s en un campo de 15 caracteres , un espacio, entonces $n como un
+ entero decimal en un campo de 5 caracteres, y otro espacio, finalmente
+ $r como un valor de punto flotante con 2 lugares decimales en un campo
+ de 10 caracteres y finalmente un caracter de salto delinea.
+ 
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que actue como el comando cat, pero invierta el orden
+ de las lineas de todos los archivos especificados en la linea de comando
+ o de todas las lineas de entrada estandar si no se especifican archivos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Modificar el programa del ejercicio previo, de manera que cada archivo especific
+ado en la linea de comando tiene sus lineas individualmente invertidos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escribir un programa que lea una lista de cadena en archivos separados e
+ imprima las cadenas en una columna de 20 caracteres justificada a la derecha.
+ Por ejemplo introduciendo hola, adios imprime hola y adios justificado
+ a la derecha en una columna de 20 caracteres.
+\end_layout
+
+\begin_layout Enumerate
+Modifica el programa del ejercicio previo para permitirle al usuario seleccionar
+ el ancho de la coluna.
+ Por ejemplo, introduciendo 20, hola y adios deberia hacer lo mismo que
+ el pgm anterior, pero introduciendo 30, hola y adios deberia de justificar
+ hola y adios en una columna de 30 caracteres.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Section
+Expresiones regulares.
+\end_layout
+
+\begin_layout Subsection
+Conceptos acerca de expresiones regulares.
+ 
+\end_layout
+
+\begin_layout Standard
+Una expresion regular es un patron - un template - a concordar contra una
+ cadena.
+ La concordancia de una expresion regular contra una cadena puede ser exitosa
+ o fallar.
+ Algunas veces el exito o falla es algo que nos interesa.
+ Otras veces, desearemos tomar un patron que concuerda y reemplazarlo con
+ otra cadena , parte del cual depende sobre como y donde exactamente concuerda
+ la expresion.
+ 
+\end_layout
+
+\begin_layout Standard
+Las expresiones regulares son utilizadas por muchos programs, como los comandos
+ de unix grep, sed , awk, edi, vi, emacs e incluso varios shells.
+ Cada programa tiene un juego diferente de caracteres de template.
+ Perl es un superset semantico de todas esas herramientas: cualquier expresion
+ regular que pueda ser descrita en una de esas herramientas puede tambien
+ ser escritas en Perl, pero no necesariamente usando los mismos caracteres.
+\end_layout
+
+\begin_layout Subsection
+Usos simples de expresiones regulares.
+ 
+\end_layout
+
+\begin_layout Standard
+Si estuvieramos buscando por todas las lineas de una archivo conteniendo
+ la cadena de caracteres abc , pudriamos usar el comando de grep:
+\end_layout
+
+\begin_layout LyX-Code
+grep abc archivo > resultado 
+\end_layout
+
+\begin_layout Standard
+En este caso, abc es la expresion regular que el comando de grep prueba
+ contra cada linea de entrada.
+ Las lineas que concuerdan son enviadas a la salida estandar.
+ 
+\end_layout
+
+\begin_layout Standard
+En perl, podemos hablar de la cadena abc como una expresion regular encerrando
+ la cadena en diagonales:
+\end_layout
+
+\begin_layout LyX-Code
+if (/abc/) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+print $_; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Pero que es lo que esta siendo probado contra la expresion regular 
+\begin_inset Quotes eld
+\end_inset
+
+abc
+\begin_inset Quotes erd
+\end_inset
+
+ ?, es nuestro viejo amigo, la variable $_.
+ Cuando una expresion regular se encierra entre diagonales como arriba,
+ la variable $_ es probada contra la expresion regular.
+ Si esta concuerda, el operador de concordancia regresa verdadero.
+ De otra manera regresa falso.
+ 
+\end_layout
+
+\begin_layout Standard
+Para este ejemplo, la variable $_ se presume contiene alguna linea de texto
+ y esta es impresa si la linea contiene los caracters 
+\begin_inset Quotes eld
+\end_inset
+
+abc
+\begin_inset Quotes erd
+\end_inset
+
+ en secuencia en cualquier parte de la linea - similar al comando grep arriba
+ mencionado - A diferencia del comando grep que opera sobre todas las lineas,
+ esta opera sobre una linea.
+ Para trabajar sobre todas la lineas agregamos un ciclo:
+\end_layout
+
+\begin_layout LyX-Code
+while (<>) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+  if (/abc/) 
+\end_layout
+
+\begin_layout LyX-Code
+    {
+\end_layout
+
+\begin_layout LyX-Code
+      print $_;
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Que tal si no sabemos el numero de b's entre la a y la c?, Si queremos imprimir
+ la linea que contenga una a seguida por cero o mas b's, seguidas por una
+ c.
+ Con grep diriamos:
+\end_layout
+
+\begin_layout LyX-Code
+grep 
+\begin_inset Quotes eld
+\end_inset
+
+ab*c
+\begin_inset Quotes erd
+\end_inset
+
+ archivo > resultado.
+\end_layout
+
+\begin_layout Standard
+En perl seria:
+\end_layout
+
+\begin_layout LyX-Code
+while (<>)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+if (/ab*c/) 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+print $_;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Exactamente igual que grep.
+ 
+\end_layout
+
+\begin_layout Standard
+Otra expresion regular simple es el 
+\shape italic
+operador de substitucion,
+\shape default
+ el cual reemplaza la parte de una cadena que concuerde con una expresion
+ regular con otra cadena.
+ El operador de substitucion se parece al comando s en la utileria de UNIX
+ sed, consistiendo de la letra s, de una diagonal , una expresion regular,
+ una diagonal y una cadena de reemplazo, y una diagnal final tal como se
+ muestra abajo:
+\end_layout
+
+\begin_layout LyX-Code
+s/ab*c/def/;
+\end_layout
+
+\begin_layout Standard
+La variable, ( $_ en este caso) es concordada contra la expresion regular
+ (ab*c).
+ Si la concordancia es exitosa, la parte del string que concuerda es reemplazado
+ por la cadena def, si no , nada pasa.
+\end_layout
+
+\begin_layout Subsection
+Patrones.
+\end_layout
+
+\begin_layout Standard
+Una expresion regular es un patron.
+ Algunas partes del patron concuerdan con caracteres simples en la cadena
+ de un tipo particular.
+ Otras partes del patron concuerdan con caracteres multiples.
+ Primero, visitaremos los patrones de caracteres simples y entonces los
+ patrones de caracteres multiples.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Patrones de caracteres simples
+\end_layout
+
+\begin_layout Standard
+El caracter mas comun y simple de concordancia de patrones en expresiones
+ regulares es un simple caracter que concuerda con si mismo.
+ En otras palabras, poner una letra en una expresion regular requiere de
+ una letra correspondiente en una cadena.
+ 
+\end_layout
+
+\begin_layout Standard
+El siguiente caracter mas comun de concordancia es el punto 
+\begin_inset Quotes eld
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Este concuerda con cualquier caracter simple excepto el caracter de salto
+ de linea (
+\backslash
+n).
+ Por ejemplo, el patron /a./ concuerda con cualquier secuencia de dos letras
+ que empiece con a y que no sea 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Un caracter de patron es representado por un par de corchetes y una lista
+ de caracteres entre los mismos.
+ Uno y solamente uno de esos caracteres debe de estar presentes en la parte
+ correspondiente de la cadena para que el patron concuerde.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+/[abcde]/
+\end_layout
+
+\begin_layout Standard
+concuerda una cadena conteniendo cualquiera de las cinco letras del alfabeto
+ en minusculas, mientras 
+\end_layout
+
+\begin_layout LyX-Code
+/[aeiouAEIOU]/
+\end_layout
+
+\begin_layout Standard
+concuerda con cualquiera de las cinco vocales en minusculas o mayusculas.
+ Si quieres utilizar un caracter de corchete derecho (]) en la lista , deberas
+ de poner una diagonal invertida enfrente de el, o ponlo como el primer
+ caracter dentro de la lista.
+ Los rangos de caracteres ( como de la a a la z ) pueden ser abreviados
+ mostrando los caracteres separados por un guion; para poner un guion en
+ la lista se debera de preceder al mismo con una diagonal invertida o colocarlo
+ al final.
+ he aqui algunos ejemplos: 
+\end_layout
+
+\begin_layout LyX-Code
+[0123456789]    # concuerda cualquier digito 
+\end_layout
+
+\begin_layout LyX-Code
+[0-9]           # lo mismo
+\end_layout
+
+\begin_layout LyX-Code
+[0-9
+\backslash
+-]         # concuerda 0-9,o menos
+\end_layout
+
+\begin_layout LyX-Code
+[a-z0-9]        # concuerda cualquier letra minuscula o digito 
+\end_layout
+
+\begin_layout LyX-Code
+[a-zA-Z0-9_]    # concuerda cualquier letra , digito o subguion 
+\end_layout
+
+\begin_layout Standard
+Existe tambien una clase de caracter negado, el cual es el mismo como clase
+ de caracter, pero tiene una flecha hacia arriba (^) inmediatamente despues
+ del corchete izquierdo.
+ Este caracter concuerda cualquier caracter que no este en la lista.
+ Por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+[^0-9]           # concuerda cualquier cosa que no sea un digito.
+\end_layout
+
+\begin_layout LyX-Code
+[^aeiouAEIOU]    # concuerda cualquier cosa que no sea vocal.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+[^
+\backslash
+^]            # concuerda cualquier cosa que no sea (^).
+\end_layout
+
+\begin_layout Standard
+Para facilidad , algunas clases de caracteres comunes estan predefinidos,
+ como se describen en la tabla:
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Construccion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Clase equivalente
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Construccion negada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Clase equivalente negada
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+d(un digito)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[0-9]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+D(no digitos!)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[^0-9]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+w(caracter alfabetico)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[a-zA-A0-9]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+W(no caracter alfabetico!)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[^a-zA-Z0-9]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+s(espacio)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[ 
+\backslash
+r
+\backslash
+t
+\backslash
+n
+\backslash
+f]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\backslash
+S(no espacios)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+[ ^ 
+\backslash
+r
+\backslash
+t
+\backslash
+n
+\backslash
+f]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esas clases abreviadas pueden ser parte de otro caracter tambien:
+\end_layout
+
+\begin_layout LyX-Code
+[
+\backslash
+da-fA-F] # match one hex digit
+\end_layout
+
+\begin_layout Subsubsection
+Patrones de agrupamiento.
+\end_layout
+
+\begin_layout Standard
+El verdadero poder de las expresiones regulares entra en juego cuando decimos
+ 
+\begin_inset Quotes eld
+\end_inset
+
+uno o mas de esos
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+hasta cinco de esos
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Entremos en detalle.
+\end_layout
+
+\begin_layout Paragraph
+Secuencia
+\end_layout
+
+\begin_layout Standard
+El primer (y probablemente menos obvio) patron de agrupamiento es la secuencia.
+ Esto significa que abc concuerda con una a seguida por una b y una c.
+ Parece simple, pero estamos nombrandolo de manera que podamos hablar de
+ eso mas tarde.
+\end_layout
+
+\begin_layout Paragraph
+Multiplicadores
+\end_layout
+
+\begin_layout Standard
+Ya hemos visto el asterisco (*) como un patron de agrupamiento.
+ El asterisco indica cero o mas de los caracteres previos ( o caracteres
+ clase).
+\end_layout
+
+\begin_layout Standard
+Dos patrones de agrupamiento que trabajan como este son el signo de mas
+ (+), significando uno o mas del caracter previo inmediato y el signo de
+ interrogacion (?), significando cero o mas del caracter previo inmediato.
+ Por ejemplo, la expresion regular /fo+ba?r/ concuerda una f seguida de
+ uno o mas de o's seguidos por una b, seguida por una a opcional, seguida
+ por una r.
+ 
+\end_layout
+
+\begin_layout Standard
+En todos los tres grupos de patrones estos se caracterizan por ser ambiciosos.
+ Si los multiplicadores tuvieran oportunidad de concordar entre cinco y
+ diez caracteres, escogeran la cadena de 10 caracteres siempre.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$_ = 
+\begin_inset Quotes eld
+\end_inset
+
+pedro xxxxxxxxxx pablo
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+s/x+/boom/;
+\end_layout
+
+\begin_layout Standard
+Siempre reemplaza todas las x's consecutivas con boom ( resultando en pedro
+ boom pablo), aun cuando un set mas corto de x's tambien concordaria la
+ misma expresion regular.
+\end_layout
+
+\begin_layout Standard
+si necesitaras decir 
+\begin_inset Quotes eld
+\end_inset
+
+cinco a diez
+\begin_inset Quotes erd
+\end_inset
+
+ x's , se puede poner cinco x's seguidas por cinco x's seguidas inmediatamente
+ por un caracter de interrogacion.
+ Pero se veria feo.
+ En lugar de eso hay una manera mas facil; El multiplicador general.
+ Este consiste en un par de llaves con uno o mas numeros dentro, como en
+ 
+\shape italic
+/x/{5,10}/
+\shape default
+.
+ El caracter inmediatamente preceente ( en este caso la 
+\begin_inset Quotes eld
+\end_inset
+
+x
+\begin_inset Quotes erd
+\end_inset
+
+) debe de ser encotrada dentro del numero indicado de repeticiones ( cinco
+ a diez aqui).
+ 
+\end_layout
+
+\begin_layout Standard
+Claro , 
+\shape italic
+/
+\backslash
+d{3}/
+\shape default
+ no solo concuerda con numeros de tres digitos.
+ Tambien concuerda con cualquier numero con mas de tres digitos en el.
+ Para concordar exactamente tres, necesitamos usar anclas, descritas mas
+ adelante.
+\end_layout
+
+\begin_layout Standard
+Si dejamos el segundo numero, como en 
+\shape italic
+/x{5,}/
+\shape default
+, significa 
+\shape italic
+
+\begin_inset Quotes eld
+\end_inset
+
+esos tantos o mas
+\begin_inset Quotes erd
+\end_inset
+
+
+\shape default
+ ( cinco o mas en este caso), y 
+\end_layout
+
+\begin_layout Standard
+no utilizamos la coma como en 
+\shape italic
+/x{5}/
+\shape default
+, significa 
+\shape italic
+
+\begin_inset Quotes eld
+\end_inset
+
+exactamente estos
+\begin_inset Quotes erd
+\end_inset
+
+
+\shape default
+ (cinco x's).
+ Para obtener cinco o menos x's se debe de utilizar el cero como en 
+\shape italic
+/x{0,5}/
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+Asi, la expresion regular /a.{5}b/ concuerda la letra a separada de la letra
+ b por cualquiera cinco caracteres diferentes de fin de linea en cualquier
+ punto de la cadena.
+ ( recuerda que un punto concuerda con cualquier caracter diferente de fin
+ de linea) .
+ 
+\end_layout
+
+\begin_layout Paragraph
+Parentesis como memoria.
+\end_layout
+
+\begin_layout Standard
+Otro operador de grupo es un par de parentesis abiertos y cerrados alrededor
+ de cualquier parte del patron.
+ Esto no cambia si el patro concuerda o no , pero causa que la parte de
+ la cadena que concuerde con el patron sea recordada para ser referenciada
+ mas tarde.
+ Por ejemplo, (a) aun concuerda una a, y ([a-z]) aun concuerda cualquier
+ letra minuscula.
+\end_layout
+
+\begin_layout Standard
+Para recordar una parte memorizada de una cadena, se debera incluir una
+ diagonal invertida seguida por un entero.
+ Esta construccion de patron representa la misma secuencia de caracteres
+ concordadas anteriormente en el mismo par numerado de parentesis ( contando
+ desde uno) .
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+/pedro(.)pablo
+\backslash
+1/;
+\end_layout
+
+\begin_layout Standard
+Concuerda una cadena consistiendo de pedro, seguido de cualquier caracter
+ sin salto de linea, seguido de pablo,seguido por ese mismo caracter simple.
+ Asi que este concuerda 
+\shape italic
+pedroxpablox
+\shape default
+, pero no 
+\shape italic
+pedroxpabloy
+\shape default
+.
+ Comparemos con 
+\end_layout
+
+\begin_layout LyX-Code
+/pedro.pablo./;
+\end_layout
+
+\begin_layout Standard
+En el cual los dos caracteres no especificados pueden ser los mismos o diferente
+s; no importa.
+ 
+\end_layout
+
+\begin_layout Standard
+De donde vino el 1?, Significa la primera parte con parentesis de la expresion
+ regular.
+ Si existen mas que una, la segunda parte ( contando de la izquierda a la
+ derecha) se referencia como 
+\backslash
+2, el tercero como 
+\backslash
+3 y asi sucesivamente.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Alternancia
+\end_layout
+
+\begin_layout Standard
+Otra construccion de agrupacion es la alternancia, como en a|b|c.
+ Esto significa concordar exactamente una de las alternativas ( a o b o
+ c en este caso).
+ Esto trabaja aun si las alternativas tienen multiples caracteres, coom
+ en /cancion|azul/, el cual puede concordar cancion o azul.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Patrones ancla
+\end_layout
+
+\begin_layout Standard
+Algunas notaciones especiales anclan un patron.
+ Normalmente, cuando un patron concuerda contra la cadena, el principio
+ de el patron es arrastrado atraves de la cadena de izquierda a derecha
+ concordando a la primer oportunidad disponible.
+ Las anclas te permiten asegurar que partes del patron se alinean con partes
+ particulares de la cadena.
+ 
+\end_layout
+
+\begin_layout Standard
+Este primer par de anclas require que una parte particular de la concordancia
+ este localizado ya sea en un limite de palabra o no.
+ El ancla 
+\backslash
+b require que un limite de palabra en el punto indicado por el patron concuerde.
+ Un limite de palabra es el lugar entre caracteres que concuerda 
+\backslash
+w y 
+\backslash
+W , o entre caracteres concordadndo 
+\backslash
+w y el principio o final de la cadena Notese que esto tiene poco que ver
+ con palabras inglesas y mucho con simbolos de C, pero eso es lo mas cercano.
+ Por ejemplo.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/pedro
+\backslash
+b/;       # concuerda pedro, pero no pedrito.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/
+\backslash
+bmo/;          # concuerda moe y mole, pero no Elmo 
+\end_layout
+
+\begin_layout LyX-Code
+/
+\backslash
+bPedro
+\backslash
+b/;     # concuerda Pedro pero no Pedrito o San Pedro.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/
+\backslash
+b
+\backslash
++
+\backslash
+b/;        # concuerda "x+y" pero no "++" o " + " 
+\end_layout
+
+\begin_layout LyX-Code
+/abc
+\backslash
+bdef/;      # Nunca concuerda (imposible un limite ahi)
+\end_layout
+
+\begin_layout Standard
+De la misma manera 
+\backslash
+B requiere que no exista un limite de palabra en el punto indicado.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+/
+\backslash
+bPedro
+\backslash
+B/;   # Concuerda 
+\begin_inset Quotes eld
+\end_inset
+
+Pedro
+\begin_inset Quotes erd
+\end_inset
+
+ pero no 
+\begin_inset Quotes eld
+\end_inset
+
+Pedro Picapiedra
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Dos anclas mas requiren que una parte particular del patron sea el siguiente
+ al final de la cadena.
+ El (^) concuerda el principio de la cadena si esta en un lugar que haga
+ sentido concordar con el principio del a cadena.
+ 
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, ^a concuerda a si y solamente si , a es el primer caracter
+ de la cadena.
+ Sin embargo , a^ concuerda los dos caracteres y un ^ en cualquier parte
+ de la cadena.
+ En otras palabras el simbolo (^) pierde su significado especial.
+ 
+\end_layout
+
+\begin_layout Standard
+El simbolo $, como ^ , ancla al patron pero al final de la cadena, no al
+ principio.
+ En otras palabras, c$ concuerda una c solo si ocurre al final de la cadena.
+ 
+\end_layout
+
+\begin_layout Subsection
+Mas acerca del operador de concordancia.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Seleccionando un destino diferente ( el operador =~)
+\end_layout
+
+\begin_layout Standard
+Usualmente la cadena que queremos hacer concordar no esta dentro de la variable
+ $_, y podria ser un problema ponerla ahi.
+ Para eso es el operador =~.
+ Este operador toma un operador de expresion regular en el lado derecoh
+ y cambia el destino del operador a algo diferente de la variable $_, por
+ ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$a=
+\begin_inset Quotes erd
+\end_inset
+
+hello world
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+a$ =~ /^he/;    # verdadero
+\end_layout
+
+\begin_layout LyX-Code
+$a =~ /(.)
+\backslash
+1/;  # concuerda la doble l
+\end_layout
+
+\begin_layout LyX-Code
+if ($a =~ /(.)
+\backslash
+l/)
+\end_layout
+
+\begin_layout LyX-Code
+{ # verdadero.
+\end_layout
+
+\begin_layout LyX-Code
+  # algo que hacer
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+El destino del operador =~ puede ser cualquier expresion que asigne a un
+ escalar un valor de cadena.
+ Por ejemplo <STDIN> .
+\end_layout
+
+\begin_layout Subsubsection
+Ignorando mayusculas.
+\end_layout
+
+\begin_layout Standard
+Para cadenas muy cortas, como y o pedro es facil utilizar [fF] o [oO].
+ Pero que tal si la cadena que queremos concordar esta en mayusculas y minuscula
+s?.
+ En algunas versiones de grep , una opcion -i ignora las mayusculas.
+ Perl tambien tiene esa opcion.
+ Se indica que ignore mayusculas agregando una i en minusculas a la diagonal
+ final, como en /algunpatron/i.
+ Esto dice que las letras del patron concordaran en cualquier caso.
+ Por ejemplo para concordar la palabra procedimiento en cualquier caso al
+ principio de la linea, utilice /^procedimiento/i.
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection*
+7.4.3 Usando un delimitador diferente.
+\end_layout
+
+\begin_layout Standard
+Si buscamos por una cadena con una expresion regular que contenga una diagonal
+ (/), debemos preceder cada diagonal con una diagonal invertida (
+\backslash
+).
+ Por ejemplo , podemos buscar por una cadena que empiece con /usr/etc com
+ esto:
+\end_layout
+
+\begin_layout LyX-Code
+$ruta = <STDIN>; # Lee la ruta de acceso 
+\end_layout
+
+\begin_layout LyX-Code
+if ($ruta =~ /^
+\backslash
+/usr
+\backslash
+/etc/)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+# ok
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+opcionalmente podemos cambiar el caracter de limite.
+ Simplemente precedemos un caracter no alfanumerico con una m y listamos
+ nuestro patron seguido por otro limitador identico, como en :
+\end_layout
+
+\begin_layout LyX-Code
+m@^/usr/etc@ # utilizamos el delimitador @ 
+\end_layout
+
+\begin_layout Subsection
+Substituciones
+\end_layout
+
+\begin_layout Standard
+Ya hablamos de la forma mas simple de substitucion: s/old/new/.
+ Es tiempo de unas pocas variaciones.
+ 
+\end_layout
+
+\begin_layout Standard
+Si queremos que el reemplazo opere con todas las concordancias posibles
+ en lugar de la primera concordancia , agregue una g a la substitucion como
+ en :
+\end_layout
+
+\begin_layout LyX-Code
+$_ = "foot fool buffoon"; s/foo/bar/g; # $_ es ahora "bart barl bufbarn"
+\end_layout
+
+\begin_layout Standard
+La cadena de reemplazo esta interpolada, permitiendo especificar una cadena
+ de reemplazo en tiempo de ejecucion:
+\end_layout
+
+\begin_layout LyX-Code
+$_ = "hello, world"; $new = "goodbye"; s/hello/$new/; # reemplaza hello
+ con goodbye
+\end_layout
+
+\begin_layout Standard
+Los caracteres de patron en la expresion regular permite a los patrones
+ concordar, en lugar de caracteres fijos: 
+\end_layout
+
+\begin_layout LyX-Code
+$_ = "this is a test"; s/(
+\backslash
+w+)/<$1>/g; # $_ es ahora "<this> <is> <a> <test>"
+\end_layout
+
+\begin_layout Standard
+Recuerde que $1 es modificado con los datos dentro de la primera concordancia
+ de parentesis.
+ 
+\end_layout
+
+\begin_layout Standard
+Una i de sufijo ( antes o despues de la g si esta presente) causa que la
+ expresion regular en el operador de substitucion ignore mayusculas, como
+ en la misma opcion del operador descrito previamente.
+ 
+\end_layout
+
+\begin_layout Subsection
+Las funciones 
+\shape italic
+split
+\shape default
+ y 
+\shape italic
+join
+\end_layout
+
+\begin_layout Standard
+Las expresiones regulares pueden ser utilizadas para separar una cadena
+ en campos.
+ La funcion de split lo hace, y la funcion de join junta las piezas de nuevo.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+split
+\end_layout
+
+\begin_layout Standard
+La funcion 
+\shape italic
+split
+\shape default
+ toma una expresion regular y una cadena, y busca por todas las ocurrencias
+ de la expresion regular dentro de esa cadena.
+ Las partes de la cadena que no concuerden con la expresion regular son
+ regresadas en secuencia como en una lista de valores.
+ Por ejemplo , aqui hay algo para separar campos separados por dos puntos,
+ como en los archivos unix /etc/passwd 
+\end_layout
+
+\begin_layout LyX-Code
+$line = "merlyn::118:10:Randal:/home/merlyn:/usr/bin/perl"; 
+\end_layout
+
+\begin_layout LyX-Code
+@fields = split(/:/,$line); # divide  $line, usando : como delimitador 
+\end_layout
+
+\begin_layout LyX-Code
+                            # ahora @fields es ("merlyn","","118","10","Randal",
+ 
+\end_layout
+
+\begin_layout LyX-Code
+                            # "/home/merlyn","/usr/bin/perl")
+\end_layout
+
+\begin_layout Subsubsection
+La funcion 
+\shape italic
+join
+\end_layout
+
+\begin_layout Standard
+La funcion 
+\shape italic
+join
+\shape default
+ toma una lista de valores y las junta utilizando una cadena entre si.
+ Este luce asi:
+\end_layout
+
+\begin_layout LyX-Code
+$cadena = join($pegamento, @lista);
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Construya una expresion regular que concuerde:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Al menos una a seguida por cualquier numero de b's
+\end_layout
+
+\begin_layout Enumerate
+Cualquier numero de diagonales invertidas seguidas por cualquier numero
+ de asteriscos ( cualquier numero puede ser cero.
+\end_layout
+
+\begin_layout Enumerate
+Tres copias consecutivas de lo que este contenido en $loquesea
+\end_layout
+
+\begin_layout Enumerate
+Cualesquiera cinco caracteres, incluyendo salto de linea.
+\end_layout
+
+\begin_layout Enumerate
+La misma palabra escrita dos o mas veces, donde 
+\begin_inset Quotes eld
+\end_inset
+
+palabra
+\begin_inset Quotes erd
+\end_inset
+
+ esta definida como una secuencia no vacia de caracteres sin espacio.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Escriba un programa que acepte una lista de palabras en STDIN y busque por
+ una linea conteniendo todas las cinco vocales (a,e,i,o y u).
+ Corra este programa en /usr/dict/words y vea que se muestra.
+ en otras palabras introduzca:  miprograma </usr/dict/words
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+modifique el programa para que las cinco vocales esten en orden y las letras
+ que intervengan no importen
+\end_layout
+
+\begin_layout Enumerate
+modifique el programa para que todas las vocales esten en orden creciente,
+ de manera que las cinco vocales esten presentes y no ocurra una 
+\begin_inset Quotes eld
+\end_inset
+
+e
+\begin_inset Quotes erd
+\end_inset
+
+ antes que una 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+ y no 
+\begin_inset Quotes eld
+\end_inset
+
+i
+\begin_inset Quotes erd
+\end_inset
+
+ocurra antes que una 
+\begin_inset Quotes eld
+\end_inset
+
+e
+\begin_inset Quotes erd
+\end_inset
+
+ y asi.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Escriba un programa que busque a traves de /etc/passwd, imprimiendo el nombre
+ real y el login de cada usuario.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que busque a traves de /etc/passwd por dos usuarios
+ con el mismo nombre, e imprima esos nombres.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Repita el ultimo ejercicio , pero reporte los nombres de login de todos
+ los usuarios con el mismo nombre.
+\end_layout
+
+\begin_layout Section
+Funciones.
+\end_layout
+
+\begin_layout Subsection
+Definiendo una funcion de usuario 
+\end_layout
+
+\begin_layout Standard
+Una funcion de usuario, mas comunmente llamada una subrutina o solo sub,
+ se define en tu programa de Perl, usando una construccion como esta:
+\end_layout
+
+\begin_layout LyX-Code
+sub misub
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+  sentencia_1;
+\end_layout
+
+\begin_layout LyX-Code
+  sentencia_2;
+\end_layout
+
+\begin_layout LyX-Code
+  sentencia_3;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+donde misub es el nombre de la subrutina, el cual es cualquier nombre como
+ los nombres que tenemos por variables escalares,arreglos y hashes.
+ Tecnicamente el nombre de la subrutina es &misub, pero raramente nos referimos
+ a ella bajo ese nombre.
+\end_layout
+
+\begin_layout Standard
+Dentro de una subrutina se pueden accesar o dar valores a las variables
+ que son compartidas con el resto del programa ( una variable global) .
+ De hecho , por default, cualquier variable referenciada dentro del cuerpo
+ de una subrutina se refiere a una variable global.
+ Existen excepciones que luego veremos.
+ 
+\end_layout
+
+\begin_layout Subsection
+Invocando una funcion de usuario.
+\end_layout
+
+\begin_layout Standard
+Se invoca a una subrutina dentro de cualquier expresion utilizando el nombre
+ de la subrutina entre parentesis, como en :
+\end_layout
+
+\begin_layout LyX-Code
+say_hello(); # una expresion simple
+\end_layout
+
+\begin_layout LyX-Code
+$a = 3 + say_hello(); # parte de una expresion mas grande
+\end_layout
+
+\begin_layout LyX-Code
+for ($x = start_value(); 
+\end_layout
+
+\begin_layout LyX-Code
+$x < end_value(); 
+\end_layout
+
+\begin_layout LyX-Code
+$x += increment()) 
+\end_layout
+
+\begin_layout LyX-Code
+{ ...
+ } # 
+\end_layout
+
+\begin_layout Standard
+Los niveles de subrutinas estan indefinidos.
+\end_layout
+
+\begin_layout Subsection
+Valores de retorno.
+\end_layout
+
+\begin_layout Standard
+Una subrutina es siempre parte de una expresion.
+ El valor de la invocacion de la subrutina se llama el valor de retorno.
+ El valor de retorno de una subrutina es el valor de la sentencia return
+ o de la ultima expresion evaluada en la subrutina.
+ 
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, definamos esta subrutina.
+\end_layout
+
+\begin_layout LyX-Code
+sub suma_de_a_y_b 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+    return $a + $b;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Argumentos
+\end_layout
+
+\begin_layout Standard
+Aun cuando las subrutinas que tienen una accion especifica son utiles, existe
+ un mayor nivel de utilidad cuando puedes pasar argumentos a una subrutina.
+ En perl, la invocacion de subrutina es seguido por una lista dentro de
+ parentesis, causando que la lista sea automaticamente asignada a una variable
+ especial llamada @_ que dura lo que dura la vida de la subrutina.
+ La subrutina puede accesar esta variable para determinar el numero de argumento
+s y el valor de esos argumentos.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+sub di_hola 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+   print 
+\begin_inset Quotes eld
+\end_inset
+
+Hola, $_[0]!
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;    # El primer parametro es el destino
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Aqui , vemos una referencia a $_[0], el cual es el primer elemento del arreglo
+ @_.
+ Esto significa que podemos invocar a la subrutina y esta utilizara el primer
+ parametro que le pasemos, por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+di_hola(
+\begin_inset Quotes eld
+\end_inset
+
+mundo
+\begin_inset Quotes erd
+\end_inset
+
+);  # resultado: Hola mundo!
+\end_layout
+
+\begin_layout Standard
+El exceso de parametros es ignorado.
+\end_layout
+
+\begin_layout Subsection
+Variables privadas en funciones
+\end_layout
+
+\begin_layout Standard
+Ya hablamos de la variable @_ y como una copia local se crea para cada subrutina
+ invocada con parametros.
+ Para crear una variable escalar, arreglo o variables hash que funcionen
+ de la misma manera se utiliza el operador 
+\shape italic
+my
+\shape default
+, que toma una lista de nombres de variables y crea versiones locales de
+ el ( o instancias, como quieras decirle).
+ He aqui la funcion de suma utilizando el operador my.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+sub add 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+my ($suma);     # hace a $suma una variable local 
+\end_layout
+
+\begin_layout LyX-Code
+$suma = 0;      # inicializa suma
+\end_layout
+
+\begin_layout LyX-Code
+foreach $_ (@_) 
+\end_layout
+
+\begin_layout LyX-Code
+{ $suma += $_;  # suma cada elemento 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+return $suma;   # ultima expresion evaluada, 
+\end_layout
+
+\begin_layout LyX-Code
+                # la suma de todos los elementos 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Esto es tambien aplicable a arreglos y hashes como lo habiamos mencionado
+ anteriormente.
+ Una recomendacion para este tipo de manejo de variables es hacerlo 
+\shape italic
+al principio de la subrutina
+\shape default
+, de hecho tambien podemos hacer lo siguiente: 
+\end_layout
+
+\begin_layout LyX-Code
+my($sum) = 0; # initialize local variable
+\end_layout
+
+\begin_layout Standard
+Aunque el operador de sum es un ejecutable en realidad automaticamente asigna
+ el valor a la variable al momento de inicializacion.
+ 
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba una subrutina que tome un valor numerico de 1 a 9 como un argumento
+ y regrese el nombre en español, como 
+\shape italic
+uno, dos, o nueve
+\shape default
+.
+ Si el valor esta fuera de rango, regrese el numero original como el nombre.
+ ( La subrutina no debera de ejecutar ninguna E/S.
+\end_layout
+
+\begin_layout Enumerate
+Tome la subrutina del ejercicio anterior, escriba un programa que tome dos
+ numeros y los sume , mostrando el resultado como 
+\shape italic
+Dos mas dos igual a cuatro
+\shape default
+.
+ ( No olvide la mayuscula de la letra inicial).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Extienda la subrutina a que regrese un valor de menos nueve a menos uno
+ y cero.
+ Intentelo en un programa.
+\end_layout
+
+\begin_layout Section
+Estructuras de control miscelaneas
+\end_layout
+
+\begin_layout Subsection
+La sentencia 
+\shape italic
+last
+\end_layout
+
+\begin_layout Standard
+En algunos de los ejercicios anteriores podriamos pensar: 
+\begin_inset Quotes eld
+\end_inset
+
+ Si tuvieramos una sentencia de break tipo C aqui, todo estaria bien
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Pues bien, existe un equivalente para salir de un ciclo temprano: la sentencia
+ 
+\shape italic
+last
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+La sentencia last se sale de el bloque mas interno, provocando que la ejecucion
+ continue con la sentencia inmediatamente siguiendo el bloque.
+ Por ejemplo;
+\end_layout
+
+\begin_layout LyX-Code
+while (algo)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+algo;
+\end_layout
+
+\begin_layout LyX-Code
+algo;
+\end_layout
+
+\begin_layout LyX-Code
+algo;
+\end_layout
+
+\begin_layout LyX-Code
+if (condicion)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+   algunaotracosa;
+\end_layout
+
+\begin_layout LyX-Code
+   algunaotracosa;
+\end_layout
+
+\begin_layout LyX-Code
+   last;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+mascosas;
+\end_layout
+
+\begin_layout LyX-Code
+mascosas;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+La sentencia last cuenta solamente bloques de ciclo, no otros bloques.
+ 
+\end_layout
+
+\begin_layout Subsection
+La sentencia 
+\shape italic
+next
+\end_layout
+
+\begin_layout Standard
+Como 
+\shape italic
+last, next
+\shape default
+ altera la secuencia ordinaria de flujo de ejecucion.
+ Sin embargo, 
+\shape italic
+next
+\shape default
+ causa que la ejecucion se salte el ciclo sin terminar el bloque.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+while (algo) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+primeraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+primeraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+primeraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+if (condicion) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+  otraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+  otraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+  
+\shape italic
+next; 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+otraparte; 
+\end_layout
+
+\begin_layout LyX-Code
+otraparte; # next llega hasta aqui
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+La sentencia 
+\shape italic
+redo
+\end_layout
+
+\begin_layout Standard
+La tercera manera en que se puede saltar en un ciclo es con 
+\shape italic
+redo
+\shape default
+.
+ Esta construccion causa un salto al principio del ciclo (sin reevaluar
+ la expresion de control) .
+ 
+\end_layout
+
+\begin_layout LyX-Code
+while (condicion) 
+\end_layout
+
+\begin_layout LyX-Code
+{ # redo llega aqui.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+algo; 
+\end_layout
+
+\begin_layout LyX-Code
+algo;
+\end_layout
+
+\begin_layout LyX-Code
+algo;
+\end_layout
+
+\begin_layout LyX-Code
+if (condicion) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+algo; 
+\end_layout
+
+\begin_layout LyX-Code
+algo; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\shape italic
+redo; 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+mas; 
+\end_layout
+
+\begin_layout LyX-Code
+mas; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Una vez mas , el bloque if no cuenta, solo los ciclos.
+ 
+\end_layout
+
+\begin_layout Subsection
+Bloques con etiquetas.
+\end_layout
+
+\begin_layout Standard
+Y que tal si me quiero saltar dos bloques?.
+ En C usariamos el goto, pero en Perl podemos etiquetar cada bloque y utilizar
+ ese nombre en last, next y redo.
+ 
+\end_layout
+
+\begin_layout Standard
+Una etiqueta es otro nombre del tipo escalar, pero no utiliza caracteres
+ especiales de puntuacion, ya que este nombre podria causar problemas de
+ conflicto con palabras reservadas, es conveniente utilizar mayusculas en
+ su definicion.
+ ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+ETIQUETA: while(condicion)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+linea;
+\end_layout
+
+\begin_layout LyX-Code
+linea;
+\end_layout
+
+\begin_layout LyX-Code
+linea;
+\end_layout
+
+\begin_layout LyX-Code
+if(condicion1)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+  
+\shape italic
+ last ETIQUETA;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+He aqui otro ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+EXTERIOR: for ($i = 1; $i <= 10; $i++) 
+\end_layout
+
+\begin_layout LyX-Code
+{ 
+\end_layout
+
+\begin_layout LyX-Code
+   INTERIOR: for ($j = 1; $j <= 10; $j++) 
+\end_layout
+
+\begin_layout LyX-Code
+  { 
+\end_layout
+
+\begin_layout LyX-Code
+   if ($i * $j == 63) 
+\end_layout
+
+\begin_layout LyX-Code
+   { 
+\end_layout
+
+\begin_layout LyX-Code
+     print "$i veces $j es 63!
+\backslash
+n"; 
+\end_layout
+
+\begin_layout LyX-Code
+    
+\shape italic
+ last EXTERIOR; 
+\end_layout
+
+\begin_layout LyX-Code
+   } 
+\end_layout
+
+\begin_layout LyX-Code
+   if ($j >= $i) 
+\end_layout
+
+\begin_layout LyX-Code
+   { 
+\end_layout
+
+\begin_layout LyX-Code
+    
+\shape italic
+ next EXTERIOR; 
+\end_layout
+
+\begin_layout LyX-Code
+   } 
+\end_layout
+
+\begin_layout LyX-Code
+  } 
+\end_layout
+
+\begin_layout LyX-Code
+ }
+\end_layout
+
+\begin_layout Subsection
+Modificadores de expresion
+\end_layout
+
+\begin_layout Standard
+Otra manera de indicar 
+\begin_inset Quotes eld
+\end_inset
+
+si esto, entonces eso
+\begin_inset Quotes erd
+\end_inset
+
+ en Perl es insertando un modificador en una expresion que es una simple
+ sentencia,como esto:
+\end_layout
+
+\begin_layout LyX-Code
+expresion if expresion_de_control;
+\end_layout
+
+\begin_layout Standard
+En este caso , la expresion de control es evaluada primero por su valor
+ verdadero, usando las mismas reglas de siempre, y si es verdadero, se evalua
+ la expresion siguiente.
+ Esto es equivalente mas o menos a:
+\end_layout
+
+\begin_layout LyX-Code
+if( expresion_de_control){
+\end_layout
+
+\begin_layout LyX-Code
+ expresion;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Excepto que no se necesitan lineas adicionales.
+ Por ejemplo he aqui como podemos salirnos de un ciclo cuando cierta condicion
+ exista:
+\end_layout
+
+\begin_layout LyX-Code
+LINEA: while (<STDIN>) { 
+\end_layout
+
+\begin_layout LyX-Code
+last LINEA if /^From: /; 
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Subsection
+&& y || como estructuras de control.
+ 
+\end_layout
+
+\begin_layout Standard
+Aunque parecen caracteres de puntuacion o parte de la expresion, pueden
+ ser considerados estructuras de control.
+ Frecuentemente pensamos 
+\begin_inset Quotes eld
+\end_inset
+
+
+\shape italic
+si esto , entonces eso
+\shape default
+
+\begin_inset Quotes erd
+\end_inset
+
+ y ya vimos dos de estas formas:
+\end_layout
+
+\begin_layout LyX-Code
+if (this) {
+\end_layout
+
+\begin_layout LyX-Code
+that; # una manera de hacerlo
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+if this; # otra manera.
+ 
+\end_layout
+
+\begin_layout Standard
+existe una tercera manera, y aun hay otras.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+this && that;
+\end_layout
+
+\begin_layout Standard
+como trabaja?, he aqui la explicacion, veamos que pasa en cada situacion
+ de verdadero o falso.
+ 
+\end_layout
+
+\begin_layout Standard
+Si es verdadero, entonces el valor de la expresion entera es desconocida,
+ porque depende de el valor de 
+\shape italic
+that
+\shape default
+.
+ Asi que that tiene que ser evaluado.
+ 
+\end_layout
+
+\begin_layout Standard
+Si es falso , no hay razon de continuar, porque el valor de la expresion
+ entera tiene que ser falso.
+ Como no hay punto para evaluarlo lo saltamos.
+ 
+\end_layout
+
+\begin_layout Standard
+De hecho , perl solamente evalua 
+\shape italic
+that
+\shape default
+ cuando es verdadero, haciendolo equivalente a las dos formas previas.
+\end_layout
+
+\begin_layout Standard
+Asimismo, el or logico trabaja como la sentencia unless .
+ Asi que podemos reemplazar:
+\end_layout
+
+\begin_layout LyX-Code
+unless (this) {
+\end_layout
+
+\begin_layout LyX-Code
+that;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+con 
+\end_layout
+
+\begin_layout LyX-Code
+this || that;
+\end_layout
+
+\begin_layout Standard
+Esto es probablemente familiar para los que estan familiarizados con programacio
+n de comandos en shells.
+ 
+\end_layout
+
+\begin_layout Subsection
+Ejercicios.
+\end_layout
+
+\begin_layout Enumerate
+Extienda el problema del tema pasado para repetir la operacion hasta que
+ la palabra fin se introduzca para uno de los valores: ( 
+\shape italic
+tip: utilice un ciclo infinito, y haga un last si el valor es fin
+\shape default
+).
+\end_layout
+
+\begin_layout Enumerate
+Reescriba el ejercicio del tema 4 , sumando los numeros hasta el 999 utilizando
+ un ciclo que salga del medio.
+ ( 
+\shape italic
+tip: utilice un bloque con un redo al final para obtener un loop infinito
+ y un last en el medio basado en una condicion
+\shape default
+).
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Section
+Filehandles y archivos
+\end_layout
+
+\begin_layout Subsubsection
+Que es un 
+\shape italic
+filehandle
+\shape default
+?
+\end_layout
+
+\begin_layout Standard
+Un filehandle en Perl es el nombre para una conexion de E/S entre el proceso
+ de perl y el mundo exterior.
+ Ya hemos visto filehandles implicitamente: STDIN es un filehandle, asimismo
+ perl provee STDOUT y STDERR.
+ Esos nombre son los mismos que los proveidos por C y C++.
+ 
+\end_layout
+
+\begin_layout Standard
+Los nombres de los filehandles son iguales a los utilizados por los bloques
+ con nombre, pero vienen de otro espacio de nombres asi que podemos tener
+ un escalar $pedro , un arreglo @pedro, un hash %pedro, una subrutina &pedro,
+ una etiqueta pedro y un filehandle pedro.
+ La recomendacion sin embargo es utilizar mayusculas con el objeto de evitar
+ conflictos con palabras reservadas.
+ 
+\end_layout
+
+\begin_layout Subsection
+Abriendo y cerrando un filehandle
+\end_layout
+
+\begin_layout Standard
+Perl provee tres filehandles , STDIN,STDOUT y STDERR , que se abren automaticame
+nte a archivos o dispositivos establecidos por el proceso padre del programa.
+ ( probablemente un shell ).
+ Pero se puede utilizar la funcion open() para abrir filehandles adicionales.
+ su sintaxis es la siguiente:
+\end_layout
+
+\begin_layout LyX-Code
+open(FILEHANDLE, 
+\begin_inset Quotes eld
+\end_inset
+
+nombre
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Standard
+donde FILEHANDLE es el nuevo filehandle y nombre es el nombre del archivo
+ externo, ( como un archivo o un dispositivo) que estara asociado con el
+ nuevo filehandle.
+ Esta invocacion abre el filehandle para leer.
+ Para abrir un archivo en modo de escritura, utilice la misma funcion, pero
+ prefije el nombre del archivo con un signo de mayor que ( como en el shell)
+ :
+\end_layout
+
+\begin_layout LyX-Code
+open(SALIDA,
+\begin_inset Quotes erd
+\end_inset
+
+>salida
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Standard
+Cuando terminamos con el uso de un filehandle, lo cerramos con el operador
+ close, como en la siguiente manera:
+\end_layout
+
+\begin_layout LyX-Code
+close(SALIDA);
+\end_layout
+
+\begin_layout Standard
+El reabrir un filehandle tambien abre el archivo previamente abierto automaticam
+ente, como el salirse del programa tambien lo hace.
+ 
+\end_layout
+
+\begin_layout Subsection
+Un cambio diferente: 
+\shape italic
+die
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+Consideremos esto un pie de nota, en el medio de la pagina.
+\end_layout
+
+\begin_layout Standard
+Un filehandle que no ha sido abierto exitosamente puede ser utilizado aun
+ sin que perl te prevenga a traves del programa.
+ Si lees el filehandle obtendras un fin de archivo inmediatamente.
+ Si escribes entonces los datos se desechan silenciosamente.
+ 
+\end_layout
+
+\begin_layout Standard
+Tipicamente, deberemos de checar el resultado del open y reportar un error
+ si el resultado no es lo que esperamos.
+ Claro , podriamos usar algo como ;
+\end_layout
+
+\begin_layout LyX-Code
+unless (open (DATOS,
+\begin_inset Quotes erd
+\end_inset
+
+>/tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+)){
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Lo siento, no pude crear /tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Pero eso es mucho trabajo, y pasa lo suficiente para que perl ofrezca un
+ medio de hacerlo mas rapido.
+ La funcion 
+\shape italic
+die
+\shape default
+ toma una lista con parentesis opcionales, escupe esa lista ( como print)
+ hacia la salida estandar de error y finaliza el proceso de perl, con un
+ estatus no cero.
+ Asi que reescribiendo la funcion previa tenemos:
+\end_layout
+
+\begin_layout LyX-Code
+unless (open DATOS,
+\begin_inset Quotes erd
+\end_inset
+
+>/tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+){
+\end_layout
+
+\begin_layout LyX-Code
+die 
+\begin_inset Quotes eld
+\end_inset
+
+Lo siento,no pude crear /tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+} # resto del programa.
+ 
+\end_layout
+
+\begin_layout Standard
+Pero, considerando que tenemos la expresion de control || podemos hacerlo
+ de otra manera:
+\end_layout
+
+\begin_layout LyX-Code
+open(DATOS,
+\begin_inset Quotes erd
+\end_inset
+
+>/tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+) || die 
+\begin_inset Quotes eld
+\end_inset
+
+Lo siento,no pude crear /tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+De esta manera die se ejecuta solamente cuando el resultado del open es
+ falso.
+ 
+\end_layout
+
+\begin_layout Standard
+Otra particularidad practica es la variable $!, que contiene el mensaje
+ describiendo el error.
+ Asi que podemos decir: 
+\end_layout
+
+\begin_layout Standard
+open(DATOS,
+\begin_inset Quotes erd
+\end_inset
+
+>/tmp/datos
+\begin_inset Quotes erd
+\end_inset
+
+) || die 
+\begin_inset Quotes eld
+\end_inset
+
+Lo siento,no pude crear /tmp/datos:$!
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Subsection
+Utilizando filehandles.
+\end_layout
+
+\begin_layout Standard
+Una vez que un filehandle se abre en modo de lectura, se pueden leer lineas
+ como leer de la entrada estandar, por ejemplo: 
+\end_layout
+
+\begin_layout LyX-Code
+open (EP,"/etc/passwd"); 
+\end_layout
+
+\begin_layout LyX-Code
+while (<EP>) { 
+\end_layout
+
+\begin_layout LyX-Code
+chomp; 
+\end_layout
+
+\begin_layout LyX-Code
+print "Vi $_ en el archivo de password!
+\backslash
+n"; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Si queremos utilizar un filehandle para escritura, debemos de colocar el
+ filehandle inmediatamente despues del print y antes que otros argumentos.
+ No deben de existir comas entre el filehandle y el resto de los argumentos.
+ 
+\end_layout
+
+\begin_layout Standard
+ejemplo; 
+\end_layout
+
+\begin_layout LyX-Code
+print LOGFILE 
+\begin_inset Quotes eld
+\end_inset
+
+Termina proceso $n de $max
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+print STDOUT 
+\begin_inset Quotes eld
+\end_inset
+
+Hola, mundo!
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+A continuacion mostramos un ejemplo de como copiar datos de un archivo especific
+ado en $a en un archivo especificado en $b .
+ 
+\end_layout
+
+\begin_layout LyX-Code
+open(IN,$a) || die "no puedo abrir $a en modo de lectura: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+open(OUT,">$b") || die "no puedo crear $b: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+while (<IN>) { 
+\end_layout
+
+\begin_layout LyX-Code
+# lee una linea del archivo $a en $_ 
+\end_layout
+
+\begin_layout LyX-Code
+print OUT $_; # imprime la linea en  $b 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+close(IN) || die "no puedo cerrar $a: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+close(OUT) || die "no puedo cerrar $b: $!";
+\end_layout
+
+\begin_layout Standard
+Claro que hay funciones en Perl que ya hacen esto.
+ 
+\end_layout
+
+\begin_layout Subsection
+Las funciones 
+\shape italic
+stat
+\shape default
+ y 
+\shape italic
+lstat
+\shape default
+.
+\end_layout
+
+\begin_layout Standard
+El operando que se le pasa a 
+\shape italic
+stat
+\shape default
+ es un filehandle o una expresion que evalua a un nombre de archivo.
+ El valor de retorno es undef, indicando que el stat fallo o una lista de
+ 13 elementos, descritos utilizando la siguiente lista de variables escalares.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+($dev,$ino,$mode,$nlink,$uid,$gid,$rdev, 
+\end_layout
+
+\begin_layout LyX-Code
+$size,$atime,$mtime,$ctime,$blksize,$blocks) = stat(...)
+\end_layout
+
+\begin_layout Standard
+Esto esta documentado en el modulo File::stat.
+ 
+\end_layout
+
+\begin_layout Standard
+Por ejemplo, para obtener el user ID y el group ID del archivo de password,
+ podemos intentar:
+\end_layout
+
+\begin_layout LyX-Code
+($uid, $gid) = (stat("/etc/passwd"))[4,5];
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+Esto nos proporciona el dueño del archivo y el grupo al que pertenece.
+ Si invocamos stat con el nombre de un link simbolico este regresa informacion
+ sobre el link al cual apunta, no al link por si mismo.
+ Para hacerlo sobre el link utilizaremos la funcion 
+\shape italic
+lstat
+\shape default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Como las pruebas de archivos, el operando de stat o lstat utiliza $_.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Ejercicios.
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Enumerate
+Escriba un progama que lea un archivo de STDIN , abra ese archivo y despliegue
+ los contenidos de cada linea precedidos por el archivo y dos puntos.
+ Por ejemplo, si pedro se lee, y el archivo pedro consiste de tres lineas,
+ aaa , bbb y ccc, veremos pedro: aaa, pedro: bbb y pedro:ccc.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que pregunte por un archivo de entrada un archivo de
+ salida , un patron de busqueda y una cadena de reemplazo, y reemplace todas
+ las ocurrencias del patron de busqueda con la cadena de reemplazo mientras
+ se copia el archivo de entrada a el archivo de salida.
+ Intentelo en varios archivos.
+ Se puede sobreescribir el archivo.
+ Puedes utilizar caracteres de expresiones regulares en la cadena de busqueda?.
+ Pudes usar $1 en la cadena de reemplazo?.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de archivos y despliegue cual de los
+ archivos es de lectura, de escritura y/o ejecutable, y cual no existe.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de archivos y encuentre el mas viejo
+ entre ellos.
+ Imprima el nombre del archivo y la edad del archivo en dias.
+\end_layout
+
+\begin_layout Section
+Formatos
+\end_layout
+
+\begin_layout Subsection
+Que es un formato?
+\end_layout
+
+\begin_layout Standard
+Perl significa 
+\begin_inset Quotes eld
+\end_inset
+
+practical extraction and report language
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Es tiempo que sepamos acerca de 
+\begin_inset Quotes eld
+\end_inset
+
+...report language
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Perl, provee la nocion de un reporte simple escribiendo un template, llamado
+ formato.
+ Un formato define una parte constante ( los encabezados de las columnas,
+ etiquetas, texto fijo o cualquier cosa) y una parte variable ( los datos
+ que usamos) .
+ Este es muy similar a la salida formateada de COBOL o algunas clausulas
+ de impresion de BASIC.
+ 
+\end_layout
+
+\begin_layout Standard
+El usar un formato consta de tres cosas:
+\end_layout
+
+\begin_layout Enumerate
+Definir un formato
+\end_layout
+
+\begin_layout Enumerate
+Cargando los datos a ser impresos en las porciones variables del formato
+ ( campos)
+\end_layout
+
+\begin_layout Enumerate
+Invocar el formato.
+\end_layout
+
+\begin_layout Standard
+Frecuentemente , el primer paso es hecho una vez y los otros hechos repetidament
+e.
+ 
+\end_layout
+
+\begin_layout Subsection
+Definicion de un formato
+\end_layout
+
+\begin_layout Standard
+Un formato se define utilizando una definicion de formato.
+ Esta definicion de formato puede estar en cualquier parte del programa,
+ como una subrutina.
+ Una definicion de formato luce asi:
+\end_layout
+
+\begin_layout LyX-Code
+format nombreformato = 
+\end_layout
+
+\begin_layout LyX-Code
+fieldline 
+\end_layout
+
+\begin_layout LyX-Code
+valor, valor_dos, valor_tres 
+\end_layout
+
+\begin_layout LyX-Code
+fieldline 
+\end_layout
+
+\begin_layout LyX-Code
+valor, valor_dos
+\end_layout
+
+\begin_layout LyX-Code
+fieldline 
+\end_layout
+
+\begin_layout LyX-Code
+valor, valor_dos, valor_tres .
+\end_layout
+
+\begin_layout Standard
+La primer linea contiene la palabra reservada format, seguido por el nombre
+ del formato y un signo de igual (=) .
+ El nombre del formato se selecciona de otro nombre de espacio y sigue la
+ misma regla que los demas.
+ Debido a que los formatos nunca se usan el el cuerpo del programa puedes
+ utilizarlo sin riesgo de tener conflictos con palabras reservadas.
+\end_layout
+
+\begin_layout Standard
+Despues de la primera linea vienen el template en si mismo, con cero o mas
+ lineas de texto.
+ El final del template se indica por una linea consistiendo de un punto.
+ 
+\end_layout
+
+\begin_layout Verse
+
+\shape italic
+Los templates son sensitivos a los espacios en blanco, este es uno de los
+ pocos lugares donde el tipo y cantidad de espacios en blanco importa en
+ el texto de un programa Perl.
+\end_layout
+
+\begin_layout Standard
+La definicion del template contiene una serie de fieldlines.
+ Cada fieldline puede contener texto fijo - que puede ser impreso literalmente
+ cuando se invoca el formato.
+ He aqui un ejemplo de un fieldline con texto fijo:
+\end_layout
+
+\begin_layout Standard
+Hola, mi nombre es Pedro Picapiedra.
+ 
+\end_layout
+
+\begin_layout Standard
+Los campos de linea tambien contienen contenedores de campo (fileholders)
+ para texto variable.
+ Si una linea contiene fileholders, la siguiente linea del template (llamado
+ el valor de la linea) dicta una serie de valores escalares - uno por fileholder
+ - que provee los valores que pueden insertarse en los campos.
+ He aqui un ejemplo de un fieldline con un filholder y la linea de valor
+ que sigue.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+Hello, my name is @<<<<<<<<<< 
+\end_layout
+
+\begin_layout LyX-Code
+$name
+\end_layout
+
+\begin_layout Standard
+El fileholder es el @<<<<<<<<<<< que especifica un texto justificado a la
+ izquierda con 11 caracteres.
+ 
+\end_layout
+
+\begin_layout Standard
+Si el fieldline tiene multiples fileholders, necesita valores multiples,
+ los valores se separan del valor por comas:
+\end_layout
+
+\begin_layout LyX-Code
+Hello, my name is @<<<<<<<<<< and I'm @<< years old.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$name, $age
+\end_layout
+
+\begin_layout Standard
+Al ponerlo todo junto podemos crear un formato simple para una etiqueta
+ de direcciones:
+\end_layout
+
+\begin_layout LyX-Code
+format ADDRESSLABEL = 
+\end_layout
+
+\begin_layout LyX-Code
+=============================== 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<<<<<<<<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$name 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<<<<<<<<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$address 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<, @< @<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$city, $state, $zip 
+\end_layout
+
+\begin_layout LyX-Code
+=============================== .
+\end_layout
+
+\begin_layout Standard
+Note que las lineas del signo de igual arriba y abajo del formato no tienen
+ campos, y no tienen lineas de valor consecuentemente.
+ 
+\end_layout
+
+\begin_layout Standard
+Una definicion de formato es como una subrutina.
+ No contiene codigo que se ejecute inmediatamente, y puede ser colocado
+ en cualquier parte del archivo con el resto del programa.
+ Regularmente se tiende a ponerlo al final del archivo adelante de nuestras
+ definiciones de subrutina.
+\end_layout
+
+\begin_layout Subsection
+Invocando un formato
+\end_layout
+
+\begin_layout Standard
+Se invoca un formato con la funcion write.
+ Esta funcion toma el nombre de un filehandle y genera texto para ese filehandle
+ utilizando el formato actual para ese filehandle.
+ Por omision , el formato actual para un filehandle es un formato con el
+ mismo nombres ( asi para STDOUT, el formato STDOUT se utiliza).
+ Pero podemos cambiarlo.
+ 
+\end_layout
+
+\begin_layout Standard
+Veamos de nuevo al formato de etiqueta de direcciones y creamos un archivo
+ de direcciones y etiquetas:
+\end_layout
+
+\begin_layout LyX-Code
+format ADDRESSLABEL = 
+\end_layout
+
+\begin_layout LyX-Code
+=============================== 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<<<<<<<<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$name 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<<<<<<<<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$address 
+\end_layout
+
+\begin_layout LyX-Code
+| @<<<<<<<<<<<<<<<<, @< @<<<< | 
+\end_layout
+
+\begin_layout LyX-Code
+$city, $state, $zip 
+\end_layout
+
+\begin_layout LyX-Code
+=============================== .
+\end_layout
+
+\begin_layout LyX-Code
+open(ADDRESSLABEL,">labels-to-print") || die "can't create"; 
+\end_layout
+
+\begin_layout LyX-Code
+open(ADDRESSES,"addresses") || die "cannot open addresses"; 
+\end_layout
+
+\begin_layout LyX-Code
+while (<ADDRESSES>) { 
+\end_layout
+
+\begin_layout LyX-Code
+   # remueve el salto de linea.
+   
+\end_layout
+
+\begin_layout LyX-Code
+   chomp;                                           
+\end_layout
+
+\begin_layout LyX-Code
+   # cargamos las variables globales.
+   
+\end_layout
+
+\begin_layout LyX-Code
+   ($name,$address,$city,$state,$zip) = split(/:/); 
+\end_layout
+
+\begin_layout LyX-Code
+   write (ADDRESSLABEL); # imprimimos
+\end_layout
+
+\begin_layout Standard
+}
+\end_layout
+
+\begin_layout Subsection
+Cambiando la seleccion por omison de los formatos.
+\end_layout
+
+\begin_layout Subsubsection
+Utilizando 
+\shape italic
+select()
+\shape default
+ para cambiar el filehandle
+\end_layout
+
+\begin_layout Standard
+El filehandle seleccionado por default para salida estandar es STDOUT, nosotros
+ podemos modificarlo utilizando la funcion select(), esta toma un filehandle
+ como parametro y lo pone como salida por omision para ese filehandle ,
+ y esto afecta todas las operaciones futuras por omision que dependen del
+ filehandle seleccionado.
+ 
+\end_layout
+
+\begin_layout Standard
+por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+Hello world
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;             # como print STDOUT
+\end_layout
+
+\begin_layout LyX-Code
+select(LOGFILE);                     # selecciona un nuevo filehandle.
+\end_layout
+
+\begin_layout LyX-Code
+print 
+\begin_inset Quotes eld
+\end_inset
+
+hola, mundo
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+;             # imprime a LOGFILE
+\end_layout
+
+\begin_layout LyX-Code
+select (STDOUT);                     # esto va a la salida estandar.
+\end_layout
+
+\begin_layout Standard
+Asi que una mejor definicion de STDOUT con respecto a print y write es que
+ es el handle por omision seleccionado.
+\end_layout
+
+\begin_layout Subsubsection
+Cambiando el nombre del formato.
+\end_layout
+
+\begin_layout Standard
+El nombre del formato por omision de un filehandle en particular es el mismo
+ que el filehandle.
+ Sin embargo, podemos cambiarlo para este filehandle en particular seleccionando
+ el nuevo nombre de formato en una variable llamada $~.
+ Por ejemplo, para utilizar el formato ADDRESSLABEL en STDOUT, es tan facil
+ como decir:
+\end_layout
+
+\begin_layout LyX-Code
+$~ = "ADDRESSLABEL";
+\end_layout
+
+\begin_layout Standard
+Pero que tal si quieres especificar el formato para el filehandle REPORT
+ a SUMMARY?.
+ Solo unos pasos adicionales para hacer esto:
+\end_layout
+
+\begin_layout LyX-Code
+$oldhandle = select REPORT;
+\end_layout
+
+\begin_layout LyX-Code
+$~=
+\begin_inset Quotes erd
+\end_inset
+
+SUMMARY
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout LyX-Code
+select ($oldhandle);
+\end_layout
+
+\begin_layout Standard
+La proxima vez que digamos :
+\end_layout
+
+\begin_layout LyX-Code
+write (REPORT);
+\end_layout
+
+\begin_layout Standard
+obtendremos la salida en el filehandle REPORT pero usando el formato SUMMARY.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Nota: 
+\size small
+el modulo object-oriented Filehandle, parte de la distribucion estandar
+ de Perl provee una manera mas simple de hacer lo mismo.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Cambiando el nombre del formato titulo de la pagina.
+\end_layout
+
+\begin_layout Standard
+Tal como hacemos para cambiar el formato de un filehandle en particular
+ cambiando la variable $~, podemos cambiar el formato de titulo de pagina
+ al modificar la variable $^.
+ Esta variable contiene el nombre del formato del titulo de la pagina para
+ el filehandle seleccionado y es lectura/escritura, significando que poodemos
+ examinar su valor para ver el nombre de formato actual y puedes cambiarlo
+ al asignarlo a el.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Cambiando la longitud de pagina.
+\end_layout
+
+\begin_layout Standard
+Si el formato de titulo de pagina se define, la longitud de pagina se vuelve
+ importante.
+ Por omision es 60 lineas; esto es cuando un write con cabe al final de
+ la linea 60, el formato de titulo de pagina se invoca automaticamente antes
+ de imprimir el texto.
+ 
+\end_layout
+
+\begin_layout Standard
+Este valor se puede modificar a traves de la variable $=.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Cambiando la posicion de la pagina.
+\end_layout
+
+\begin_layout Standard
+Si imprimimos texto a un filehandle, este modifica la cuenta de lineas de
+ la posicion de pagina porque Perl no cuenta lineas para otra cosa que no
+ sea un write.
+ Si queremos hacerle saber a Perl que hemos impreso unas cuantas lineas
+ extras debemos ajustar el contador interno , el cual es la variable $-.
+\end_layout
+
+\begin_layout Standard
+$- es puesto a cero al principio del programa para cada filehandle.
+ Esto asegura que el contador de titulo de pagina sera invocado cara cada
+ filehandle ala primera escritura.
+ 
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que abra el archivo /etc/passwd por nombre e imprima
+ el usuario, userID (numero) y nombre real en columnas formateadas.
+ Utilice format y write.
+\end_layout
+
+\begin_layout Enumerate
+Agrege un formato de titulo de pagina al programa previo.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Agregue un numero de pagina secuencial al titulo de pagina, para ver pagina
+ 1 , pagina 2 y asi en la salida.
+\end_layout
+
+\begin_layout Section
+Acceso de directorios
+\end_layout
+
+\begin_layout Subsection
+Moviendose alrededor del arbol de directorios.
+\end_layout
+
+\begin_layout Standard
+Probablemente estas familiarizado con la nocion de directorio actual y usando
+ el comando cd del shell.
+ En programacion se invoca la llamada chdir para cambiar el directorio actual
+ de un proceso, y eses es el nombre usado por perl tambien.
+ 
+\end_layout
+
+\begin_layout Standard
+La funcion chdir en perl toma un argumento - evaluando a un nombre de directorio
+ al cual el directorio actual sera puesto.
+ Este regresa verdadero si lo hizo y falso no fallo.
+ Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+chdir("/etc") || die "cannot cd to /etc ($!)";
+\end_layout
+
+\begin_layout Standard
+La funcion chdir sin parametros te lleva por omision a tu directorio home,
+ como el comando cd en el shell.
+\end_layout
+
+\begin_layout Subsection
+Globbing
+\end_layout
+
+\begin_layout Standard
+Es muy comun que utilicemos un asterisco en el manejo de nuestros comandos
+ en un shell, por ejemplo si decimos /etc/host* obtendremos una lista de
+ comandos que empiecen con host en el directorio etc, a la expansion de
+ argumentos como * o /etc/host* en la lista de archivos que concuerdan se
+ le llama 
+\shape italic
+globbing.
+ 
+\end_layout
+
+\begin_layout Standard
+Perl soporta el globbing a traves de mecanismos simples: solamente pon el
+ patron de globbing entre <> o utilice la funcion 
+\shape italic
+glob
+\shape default
+ ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+@a = </etc/host*>; 
+\end_layout
+
+\begin_layout LyX-Code
+@a = glob("/etc/host*");
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Standard
+En un contexto de lista, glob regresa una lista de todos los nombres que
+ concuerdan con el patron.
+ O una lista vacia si no concuerdan.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+while (defined($nextname = </etc/host*>)) { 
+\end_layout
+
+\begin_layout LyX-Code
+print "one of the files is $nextname
+\backslash
+n"; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Handles de directorios.
+\end_layout
+
+\begin_layout Standard
+Si el sistema operativo en el cual se corre Perl provee la biblioteca readdir
+ o su equivalente entoces podemos accesar a los handles de directorios.
+ un handle de directorio es un nombre como los otros nombres de escalares
+ , este representa una conexion a un directorio en particular.
+ En lugar de leer datos , se usa el handle para leer listas de archivos
+ dentro del directorio.
+ Los handles de directorios son siempre de solo lectura.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Abriendo y cerrando un handle de directorio.
+\end_layout
+
+\begin_layout Standard
+La funcion opendir trabaja como en C y C++.
+ Le das a esta el nombre de un nuevo handle de directorio y un valor de
+ cadena denotando el nombre del directorio a ser abierto.
+ El valor de retorno de opendir es cierto si el directorio puede ser abierto
+ y falso de otra manera.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+opendir(ETC,"/etc") || die "Cannot opendir /etc: $!";
+\end_layout
+
+\begin_layout LyX-Code
+closedir(ETC);
+\end_layout
+
+\begin_layout Subsubsection
+Leyendo un handle de directorio
+\end_layout
+
+\begin_layout Standard
+Una vez abierto , podemos leer la lista de nombres con readdir, que toma
+ un solo parametro, el handle del directorio.
+ Cada invocacion de readdir en un contexto escalar regresa con el siguiente
+ nombre de archivo en orden aleatorio.
+ Si no hay mas readdir regresa undef.
+ Este es un ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+opendir(ETC,"/etc") || die "no etc?: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+while ($name = readdir(ETC)) { 
+\end_layout
+
+\begin_layout LyX-Code
+# scalar context, one per loop 
+\end_layout
+
+\begin_layout LyX-Code
+print "$name
+\backslash
+n"; # prints ., .., passwd, 
+\end_layout
+
+\begin_layout LyX-Code
+group, and so on 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+closedir(ETC);
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que cambie el directorio especificado como entrada,
+ entonces liste los nombres de los archivos en orden alfabetico despues
+ de cambiarse ahi.
+ ( No mostrarla si el cambio no fue exitoso, en cambio si advertir al usuario).
+\end_layout
+
+\begin_layout Enumerate
+Modificar al programa para que incluya todos los archivos, no solamente
+ los que no empiezan con .
+ Trate de hacerlo con glob y un handle de directorio.
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Section
+Manipulacion de archivos y directorios
+\end_layout
+
+\begin_layout Standard
+Aqui mostramos como manipular los archivos , no los datos que contienen.
+ Asumiremos que estamos trabajando en un sistema POSIX para accesar archivos
+ y directorios.
+ 
+\end_layout
+
+\begin_layout Subsection
+Removiendo archivos.
+\end_layout
+
+\begin_layout Standard
+Ya vimos como crear archivos dentro de perl , ahora aprenderemos como removerlos.
+ 
+\end_layout
+
+\begin_layout Standard
+La funcion unlink ( llamado asi por la funcion POSIX) borra un nombre por
+ archivo.
+ Cuando el ultimo nombre para un archivo es removido, el archivo en si mismo
+ es removido.
+ Ej:
+\end_layout
+
+\begin_layout LyX-Code
+unlink ("pedro"); # adios pedro
+\end_layout
+
+\begin_layout LyX-Code
+print "que archivo quieres borrar? "; 
+\end_layout
+
+\begin_layout LyX-Code
+chomp($name = <STDIN>); 
+\end_layout
+
+\begin_layout LyX-Code
+unlink ($name);
+\end_layout
+
+\begin_layout Standard
+La funcion unlink puede tomar una lista de nombres tambien:
+\end_layout
+
+\begin_layout LyX-Code
+unlink(
+\begin_inset Quotes eld
+\end_inset
+
+perro
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+datos
+\begin_inset Quotes erd
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout LyX-Code
+unlink <*.o>;
+\end_layout
+
+\begin_layout Standard
+El valor de regreso de unlink es el numero de archivos borrados.
+ 
+\end_layout
+
+\begin_layout Standard
+He aqui un programa de ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+foreach $file (<*.o>) { # step through a list of .o files 
+\end_layout
+
+\begin_layout LyX-Code
+unlink($file) || warn "having trouble deleting $file: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Renombrando un archivo.
+\end_layout
+
+\begin_layout Standard
+Para renombrar un archivo en Perl se utiliza la funcion rename(), este toma
+ como argumento dos parametros, el viejo nombre y el nuevo nombre.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+rename("pedro","pablo") || die "No puedo renombrar pedro a pablo: $!";
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout Subsection
+Funciones adicionales con archivos.
+\end_layout
+
+\begin_layout Standard
+Perl soporta las siguientes funciones que operan sobre archivos:
+\end_layout
+
+\begin_layout Standard
+Linkear directorios.
+\end_layout
+
+\begin_layout LyX-Code
+link("fred","bigdumbguy") || die "cannot link fred to bigdumbguy";
+\end_layout
+
+\begin_layout Standard
+Crear directorios:
+\end_layout
+
+\begin_layout LyX-Code
+mkdir("gravelpit",0777) || die "cannot mkdir gravelpit: $!";
+\end_layout
+
+\begin_layout Standard
+remover directorios:
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+rmdir("gravelpit") || die "cannot rmdir gravelpit: $!";
+\end_layout
+
+\begin_layout Standard
+Modificar permisos:
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+chmod(0666,"fred","barney");
+\end_layout
+
+\begin_layout Standard
+Modificar accesos a archivos
+\end_layout
+
+\begin_layout LyX-Code
+chown(1234, 35, "slate", "granite");
+\end_layout
+
+\begin_layout Standard
+Modificar timestamps.
+\end_layout
+
+\begin_layout LyX-Code
+utime($atime,$mtime,"fred","barney");
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que trabaje como rm, borrando los archivos dados como
+ linea de comandos cuando es invoque el programa.
+ Recuerde que los argumentos de la linea de comandos se encuentran en el
+ arreglo @ARGV cuando el programa inicia.
+\end_layout
+
+\begin_layout Enumerate
+Escribe un programa que trabaje como mv , renombrando el primer argumento
+ de la linea de comandos a el segundo argumento de la linea de comandos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que trabaje como ln creando una liga del primer argumento
+ de la linea de comandos al segundo argumento de la linea de comandos.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si se tienen links simbolicos, modifique el programa del ejercicio previo
+ para manejar un switch opcional.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Si se tienen links simbolicos escriba un programa que busque por todos los
+ archivos con links simbolicos en el directorio e imprima el nombre y el
+ valor simbolico del link como lo hace ls -l.
+ Cree links simbolicos en el directorio actual y pruebelos.
+\end_layout
+
+\begin_layout Section
+Manejo de procesos
+\end_layout
+
+\begin_layout Subsection
+Usando 
+\shape italic
+\size normal
+system
+\shape default
+\size default
+ y 
+\shape italic
+\size normal
+exec
+\end_layout
+
+\begin_layout Standard
+Cuando le damos a un shell una linea a ejecutar , el shell usualmente crea
+ un nuevo proceso para ejecutar el comando.
+ Este nueo proceso se convierte en un hijo del shell, ejecutado independientemen
+te.
+ 
+\end_layout
+
+\begin_layout Standard
+Similarmente Perl puede lanzar procesos de varias maneras.
+ La manera mas simple de lanzar procesos es a traves de la funcion system.
+ En su forma mas simple, esta funcion maneja una cadena simple que lanza
+ un nuevo shell y el comando a ejecutar.
+ Cuando el comando se termina La funcion del sistema regresa el valor de
+ retorno del comando.
+ 
+\end_layout
+
+\begin_layout Standard
+Ejemplo: 
+\end_layout
+
+\begin_layout Standard
+system(
+\begin_inset Quotes eld
+\end_inset
+
+date
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Standard
+Este ejecuta el comando date.
+ Para la funcion system los tres archivos estandar (entrada estandar, salida
+ estandar y error estandar ) se heredan del proceso Perl.
+ 
+\end_layout
+
+\begin_layout Subsection
+Usando apostrofes
+\end_layout
+
+\begin_layout Standard
+Otra manera de lanzar procesos es poner un comando /bin/sh entre apostrofes.
+ Como el shell , esete envia un comando y espera por el proceso a que termine,
+ capturando la salida estandar.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+$ahora = 
+\begin_inset Quotes eld
+\end_inset
+
+Son las 
+\begin_inset Quotes eld
+\end_inset
+
+.`date`; #Obtiene texto y salida de fecha.
+\end_layout
+
+\begin_layout Standard
+He aqui como manejarlo en un contexto de lista:
+\end_layout
+
+\begin_layout LyX-Code
+foreach $_ (`who`) { 
+\end_layout
+
+\begin_layout LyX-Code
+# uno por cada linea de who
+\end_layout
+
+\begin_layout LyX-Code
+($who,$where,$when) = /(
+\backslash
+S+)
+\backslash
+s+(
+\backslash
+S+)
+\backslash
+s+(.*)/; 
+\end_layout
+
+\begin_layout LyX-Code
+print "$quien $where en $when
+\backslash
+n"; 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Usando procesos como filehandles.
+\end_layout
+
+\begin_layout Standard
+Otra manera de lanzar procesos es crear un proceso que parezca un filehandle
+ .
+ Podemos crear un filehandle de proceso que capture la salida o provea entrada
+ al proceso.
+ He aqui un ejemplo de crear un filehandle de who.
+\end_layout
+
+\begin_layout LyX-Code
+open(WHOPROC, "who|"); # abre who como lectura
+\end_layout
+
+\begin_layout Standard
+Note la barra vertical del lado dereco de who.
+ Eso le dice a perl que no es un archivo sino un comando.
+ Debido a que la barra esta del lado derecho el filehandle esta abierto
+ de lectura, significando que la salida estandar sera capturada.
+ Para el resto del programa WHOPROC es meramente un filehandle que esta
+ abierto en modo de lectura.
+ He aqui un ejemplo de leer los datos del comando en un arreglo:
+\end_layout
+
+\begin_layout LyX-Code
+@salidawho = <WHOPROC>;
+\end_layout
+
+\begin_layout Standard
+Similarmente, para abrir un comando que espera entrada, abrimos un filehandle
+ de proceso de escritura poniendo la barra vertical en la izquierda del
+ comando, como :
+\end_layout
+
+\begin_layout LyX-Code
+open(LPR,
+\begin_inset Quotes erd
+\end_inset
+
+|lpr -Pimpresora
+\begin_inset Quotes erd
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout LyX-Code
+print LPR @reporte;
+\end_layout
+
+\begin_layout LyX-Code
+close(LPR);
+\end_layout
+
+\begin_layout Standard
+No solamente uno sino varios comandos pueden ser ejecutados a la vez, por
+ ejemplo, el la siguiente linea inicia un proceso de ls , cuya salida va
+ a tail, que finalmente envia su salida a el filehandle WHOPR.
+\end_layout
+
+\begin_layout LyX-Code
+open(WHOPR, "ls | tail -r |");
+\end_layout
+
+\begin_layout Subsection
+Usando fork
+\end_layout
+
+\begin_layout Standard
+Otra manera de crear procesos adicionales es clonar el proceso de perl utilizand
+o la llamada de UNIX fork.
+ La funcion fork simplemente hace lo que la funcion fork del sistema hace:
+ crea un clon del proceso.
+ Este clon, llamado hijo, comparte el mismo codigo ejecutable, variables
+ e incluso archivos abiertos.
+ Para distinguirlos de dos procesos , el valor de retorno de fork es cero
+ para el hijo y no cero para el padro ( o undef si el system call falla).
+ El valor de no cero recibido por el padre pasa a ser el process id del
+ hijo.
+ Podemos checar el codigo de retorno y actuar acorde.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+if (!defined($child_pid = fork())) { die "cannot fork: $!"; } 
+\end_layout
+
+\begin_layout LyX-Code
+elsif ($child_pid) { 
+\end_layout
+
+\begin_layout LyX-Code
+# I'm the parent 
+\end_layout
+
+\begin_layout LyX-Code
+} else { 
+\end_layout
+
+\begin_layout LyX-Code
+# I'm the child 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout Standard
+Para aprovechar mejor este clon, necesitamos aprender un poco mas cosas
+ acerca de las funciones wait, exit,y exec.
+\end_layout
+
+\begin_layout Standard
+Lo mas simple es la funcion exec.
+ Es como la funcion system, excepto que en lugar de lanzar un nuevo proceso
+ para ejecutar un comando de shell, Perl reemplaza el proceso con el shell.
+ Despues de un exec exitoso, el programa de Perl se ha ido, siendo reemplazado
+ por el programa.
+ Por ejemplo:
+\end_layout
+
+\begin_layout Standard
+exec 
+\begin_inset Quotes eld
+\end_inset
+
+date
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+reemplaza al programa Perl con el comando date, causando la salida de date
+ que vaya a la salida estandar del programa Perl.
+ Cuando este termina no hay nada mas que hacer porque el programa de perl
+ se ha ido.
+\end_layout
+
+\begin_layout Standard
+Otra manera de ver esto es que la funcion system es como un fork seguido
+ por un exec, como sigue:
+\end_layout
+
+\begin_layout LyX-Code
+# METHOD 1...
+ using system: system("date");
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+# METHOD 2...
+ using fork/exec: 
+\end_layout
+
+\begin_layout LyX-Code
+unless (fork) { 
+\end_layout
+
+\begin_layout LyX-Code
+# fork returned zero, so I'm the child, and I exec: 
+\end_layout
+
+\begin_layout LyX-Code
+exec("date"); # child process becomes the date command 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+Esto no es correcto del todo , porque el comando date y el proceso padre
+ estan trabajando al mismo tiempo, mezclando su salida probablemente.
+ Lo que necesitamos hacer es decirle a padre que espera hasta que el proceso
+ hijo termine.
+ Eso es exactamente lo que la funcion wait hace; espera hasta que el hijo
+ ha completado.
+ La funcion waitpid es mas discriminativa; espera por un hijo especifico
+ a que termine ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+if (!defined($kidpid = fork())) { 
+\end_layout
+
+\begin_layout LyX-Code
+  # fork returned undef, so failed 
+\end_layout
+
+\begin_layout LyX-Code
+  die "cannot fork: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+elsif ($kidpid == 0) { 
+\end_layout
+
+\begin_layout LyX-Code
+  # fork returned 0, so this branch is the child 
+\end_layout
+
+\begin_layout LyX-Code
+  exec("date"); # if the exec fails, fall through to the next statement
+ 
+\end_layout
+
+\begin_layout LyX-Code
+  die "can't exec date: $!"; 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+else { 
+\end_layout
+
+\begin_layout LyX-Code
+  # fork returned neither 0 nor undef, 
+\end_layout
+
+\begin_layout LyX-Code
+  # so this branch is the parent 
+\end_layout
+
+\begin_layout LyX-Code
+  waitpid($kidpid, 0); 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout Subsection
+Sumario de operaciones de proceso
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features rotate="90" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Operacion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Entrada estandar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Salida estandar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Error estandar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Esperado?
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+system()
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado del programa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado delprograma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado del programa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+apostrofe
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado delprograma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Capturado como valor de cadena
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado delprograma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Si
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comando 
+\shape italic
+open()
+\shape default
+como filehandle de salida
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Conectado al filehandle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado delprograma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado del programa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Solo altiempo declose()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comando 
+\shape italic
+open()
+\shape default
+como filehandlede entrada
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado del programa
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Conectado al filehandle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Heredado delprograma
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Solo altiempo declose()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+fork, exec, waitwaitpd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seleccionado por el usuario
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seleccionadopor el usuario
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seleccionadopor el usuario
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Seleccionadopor el usuario
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Envio y recepcion de señales
+\end_layout
+
+\begin_layout Standard
+Un metodo de comunicacion interprocesos es enviar y recibir señales.
+ Una señal es un mensaje de un bit (significando 
+\begin_inset Quotes eld
+\end_inset
+
+esta señal ha pasado
+\begin_inset Quotes erd
+\end_inset
+
+) enviada a un proceso de otro proceso o del kernel.
+ Las señales estan numeradas, usualmente de 1 a algun otro numero como 15
+ o 31.
+ Algunas señales tienen un significado predefinido y son enviadas automaticament
+e a un proceso en ciertas condiciones ( como fallas de memoria o excepciones
+ de punto flotante).
+ Otros son estrictamente generados de otros procesos.
+ Esos procesos deben de tener permiso para enviar dicha señal.
+ solo si eres un superusuario o si el que envia el proceso y el receptor
+ tienen el mismo proceso se permite enviar la señal.
+\end_layout
+
+\begin_layout Standard
+La respuesta a la señal es la accion de la señal.
+ Las señales predefinidas tienen ciertas acciones por omision, com abortar
+ el proceso o suspenderlo.
+ Otras son completamente ignoradas por omision.
+ Casi todas las señales pueden ser manipuladas, para ser ignoradas o capturadas.
+ 
+\end_layout
+
+\begin_layout Standard
+Hasta aqui las generalidades.
+ Cuando un proceso de Perl captura una señal, una subrutina escogida se
+ invoca asincronamente y automaticamente, momentaneamente interrumpiendo
+ lo que este ejecutando.
+ Cuando la subrutina termina, lo que haya estado ejecutando se reinicia
+ como si nada hubiera pasado.
+ 
+\end_layout
+
+\begin_layout Standard
+Tipicamente la subrutina de captura de señal hace una de dos cosas: abortar
+ el programa despues de ejecutar algun codigo de limpieza o prender alguna
+ bandera ( como una variable global) que el programa checa rutinariamente.
+ 
+\end_layout
+
+\begin_layout Standard
+De hecho, hacer algo mas complicado que esto podria complicar las cosas;
+ a muchos programas no le gustan ser ejecutados desde el programa principal
+ y la subrutina al mismo tiempo.
+ 
+\end_layout
+
+\begin_layout Standard
+Necesitas conocer los nombres de las señales para registrar un manejador
+ de señales en Perl.
+ Al registrar un manejardor de señales perl llamara a la subrutina seleccionada
+ cuando la señal se reciba.
+\end_layout
+
+\begin_layout Standard
+Los nombres de señales estan definidos en la pagina del manual de signal
+ y usualmente en el include file de C /usr/include/sys/signal.h.
+ Los nombres generalmente inician con SIG, como SIGINT, SIGQUIT y SIGKILL.
+ Para declarar la subrutina mi_sigint() como el manejador de señal que maneja
+ el SIGINT, ponemos el valor en el hash magico %SIG.
+ En este hash, ponemos el valor de la llave INT (eso es SIGINT sin el SIG)
+ al nombre de la subrutina que atrapara la señal de SIGINT, como: 
+\end_layout
+
+\begin_layout LyX-Code
+$SIG{'INT'} = 'mi_sigint';
+\end_layout
+
+\begin_layout Standard
+Pero claro que necesitamos una definicion para esa subrutina.
+ He aqui una simple:
+\end_layout
+
+\begin_layout LyX-Code
+sub mi_sigint { 
+\end_layout
+
+\begin_layout LyX-Code
+   $saw_sigint = 1; # enciende una bandera 
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+He aqui otra mas larga:
+\end_layout
+
+\begin_layout LyX-Code
+$saw_sigint = 0; # limpia la bandera
+\end_layout
+
+\begin_layout LyX-Code
+$SIG{'INT'} = 'my_sigint_catcher'; # registra el catcher 
+\end_layout
+
+\begin_layout LyX-Code
+foreach (@huge_array) { 
+\end_layout
+
+\begin_layout LyX-Code
+# hace algo 
+\end_layout
+
+\begin_layout LyX-Code
+# hace algo mas
+\end_layout
+
+\begin_layout LyX-Code
+# hace aun mas 
+\end_layout
+
+\begin_layout LyX-Code
+if ($saw_sigint) { 
+\end_layout
+
+\begin_layout LyX-Code
+# se encendio la interrupcion? 
+\end_layout
+
+\begin_layout LyX-Code
+# algo de limpieza aqui; 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+$SIG{'INT'} = 'DEFAULT'; # restaura la accion de default.
+\end_layout
+
+\begin_layout Standard
+El truco aqui es que el valor de la bandera es ejecutado en puntos utiles
+ durante la evaluacion y es usado para salir del ciclo prematuramente, aqui
+ tambien manejamos algunas acciones de limpieza.
+ Note que la ultima sentencia en el codigo precedente: establecer la accion
+ de default para el manejador de señal.
+ El ponerlo a DEFAULT restaura la accion por omision para esta señal en
+ particular.
+ Otro valor util es IGNORE, significando que ignore la señal.
+ Se puede hacer esto si no hay acciones de limpieza requeridas , y no quieres
+ terminar las operaciones temprano.
+ 
+\end_layout
+
+\begin_layout Standard
+Una de las maneras en que la señal SIGINT se genera es al hacer que el usuario
+ presione el caracter de interrupcion seleccionado ( como CTRL-C) en la
+ terminal.
+ Pero un proceso puede generar la señal SIGINT directamente utilizando la
+ funcion kill.
+ Esta funcion toma un numero de señal o nombre y envia la señal a la lista
+ de procesos ( identificados por el process ID) siguiendo a la señal.
+ Asi, enviando una señal de un programa requiere el determinar el ID de
+ los procesos recipientes.
+ Supongamos que quieres enviar la señal 2 ( tambien conocida como SIGINT)
+ a los procesos 234 y 237.
+ Es tan simple como esto:
+\end_layout
+
+\begin_layout LyX-Code
+kill(2,234,237);        #  envia  SIGINT a 234 y 237 
+\end_layout
+
+\begin_layout LyX-Code
+kill ('INT', 234, 237); # lo mismo
+\end_layout
+
+\begin_layout Subsection
+Ejercicios.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que maneje la salida del comando date para obtener el
+ dia actual de la semana.
+ Si el dia de la semana es un dia habil, imprimir 
+\shape italic
+a trabajar
+\shape default
+, de otra manera imprimir 
+\shape italic
+ve a jugar.
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que obtenga todos los nombres reales de los usuarios
+ de el archivo /etc/passwd, y que transforme la salida de el comando who,
+ reemplazando el nombre del login ( primera columna) con el nombre real.
+ ( Tip: crear un hash donde la llave es el nombre del login ).
+ Trate esto con el comando who utilizando apostrofes y abierto como pipe.
+ Cual es mas facil?.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Modifique el programa previo para que la salida automaticamente vaya a la
+ impresora.
+ ( si no puedes accesar una impresora tal vez puedes enviarte un correo).
+\end_layout
+
+\begin_layout Enumerate
+Supongamos que la funcion mkdir no funciona.
+ Escriba una subrutina que no utilice mkdir, pero invoca /bin/mkdir con
+ la funcion system.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Extienda la subrutina del ejercicio previo que emplee chmod para cambiar
+ los permisos.
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Section
+Transformacion de datos miscelaneas
+\end_layout
+
+\begin_layout Subsection
+Encontrando una subcadena.
+\end_layout
+
+\begin_layout Standard
+Encontrar una subcadena depende en donde la perdiste.
+ Si pasa que la perdiste dentro de una cadena grande estas de suerte, porque
+ index puede ayudar.
+ Por ejemplo:
+\end_layout
+
+\begin_layout LyX-Code
+$x = index($string,$substring);
+\end_layout
+
+\begin_layout Standard
+Perl localiza la primera ocurrencia de la subcadena dentro de una cadena,
+ regresando un entero a la ubicacion del primer caracter.
+ El valor de indice regresado se basa en cero: si la subcadena es encontrada
+ al principio de la cadena se obtiene un 0.
+ Si es un caracter posterior se obtiene 1 y asi.
+ Si no se encuentra se obtiene un -1.
+\end_layout
+
+\begin_layout Standard
+Veamos este:
+\end_layout
+
+\begin_layout LyX-Code
+$donde = index("hello","e");            # $donde es 1.
+\end_layout
+
+\begin_layout LyX-Code
+$persona = "pablo"; 
+\end_layout
+
+\begin_layout LyX-Code
+$donde = index("pedro pablo",$persona); # $donde es 5.
+\end_layout
+
+\begin_layout LyX-Code
+@rockers = ("pedro pablo
+\begin_inset Quotes erd
+\end_inset
+
+); 
+\end_layout
+
+\begin_layout LyX-Code
+$donde = index(join(" ",@rockers),$person); # lo mismo.
+\end_layout
+
+\begin_layout Standard
+Notice that both the string being searched and the string being searched
+ for can be a literal string, a scalar variable containing a string, or
+ even an expression that has a string value.
+ Here are some more examples:
+\end_layout
+
+\begin_layout LyX-Code
+$donde = index("una cadena muy larga","larga"); # $donde obtiene 13 
+\end_layout
+
+\begin_layout LyX-Code
+$donde= index("una cadena muy larga","pedro");  # $donde obtiene -1
+\end_layout
+
+\begin_layout Standard
+If the string contains the substring at more than one location, the index
+ function returns the leftmost location.
+ To find later locations, you can give index a third parameter.
+ This parameter is the minimum value that will be returned by index, allowing
+ you to look for the next occurrence of the substring that follows a selected
+ position.
+ It looks like this:
+\end_layout
+
+\begin_layout Standard
+Si la cadena contiene la subcadena en mas un una ubicacion, la funcion index
+ regresa la ubicacion mas a la izquierda.
+ Para encontrar ubicaciones posteriores le podemos dar a index un tercer
+ parametro.
+ Este parametro es el valor minimo que sera regresado por index, permitiendo
+ buscar por la siguiente ocurrencia de la subcadena que sigue a la posicion
+ seleccionada.
+ Como esto:
+\end_layout
+
+\begin_layout LyX-Code
+$x = index($bigstring,$littlestring,$skip);
+\end_layout
+
+\begin_layout Standard
+He aqui unos ejemplos de como trabaja.
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","l");   # regresa 2 (primero l) 
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","l",0); # lo mismo
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","l",1); # aun lo mismo
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","l",3); # ahora regresa 3 
+\end_layout
+
+\begin_layout LyX-Code
+                                     # (3 es el primer lugar mas grande
+ 
+\end_layout
+
+\begin_layout LyX-Code
+                                     # o igual a 3) 
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","o",5); # regresa 7 (segundo o) 
+\end_layout
+
+\begin_layout LyX-Code
+$where = index("hello world","o",8); # regresa -1 (nada despues de 8)
+\end_layout
+
+\begin_layout Subsection
+Ejercicios
+\end_layout
+
+\begin_layout Enumerate
+Escriba un programa que lea una lista de archivos, separandolos en sus component
+es principio y fin.
+ ( todo hasta la ultima diagonal es principio y todo despues dela diagonal
+ es el fin.
+ Si no hay diagonal todo es fin.) Trate esto con cosas como /pedro, pablo
+ y pedro/pablo.
+ 
+\end_layout
+
+\begin_layout Section
+Revision de caracteristicas avanzadas.
+\end_layout
+
+\end_body
+\end_document
