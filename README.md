@@ -1,2 +1,4 @@
-# Curso_Basico_de_Perl
+# Curso Basico de Perl
 Curso Básico de Perl
+Fernando Quintero
+
